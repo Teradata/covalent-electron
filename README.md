@@ -15,7 +15,7 @@ Covalent-Electron is the Electron Platform to build desktop apps using Covalent 
 * Install `npm install`
 * Create Electron package `npm run package`
 
-For a system running OS X the Covalent.app folder generated can be executed. 
+For a system running OS X the dist-app/Covalent-darwin-x64/Covalent.app folder generated can be executed. 
 For a Windows x64 build the Covalent-win32-x64/Covalent.exe can be executed.
 
 ---
