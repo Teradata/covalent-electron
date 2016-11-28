@@ -15,7 +15,7 @@
     "ngbuild": "rm -rf ./dist && ng build",
     "build": "bash scripts/build-release",
     "electron": "npm run prepare && electron dist",
-    "package": "npm run ngbuild && npm run build && ./node_modules/electron-packager/cli.js dist Covalent --icon=src/app/assets/ico/icon.icns --platform=darwin --arch=all --out=dist-app --overwrite"
+    "package": "npm run ngbuild && npm run build && ./node_modules/electron-packager/cli.js dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite"
   },
   "engines": {
     "node": ">4.4 < 7",
