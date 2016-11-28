@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { DocsAppComponent } from './app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { appRoutes, appRoutingProviders } from './app.routes';
 
@@ -14,7 +14,7 @@ import { CovalentJsonFormatterModule } from '@covalent/json-formatter';
 
 @NgModule({
   declarations: [
-    DocsAppComponent,
+    AppComponent,
     HomeComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
@@ -31,6 +31,6 @@ import { CovalentJsonFormatterModule } from '@covalent/json-formatter';
     appRoutingProviders,
   ], // additional providers needed for this module
   entryComponents: [ TD_LOADING_ENTRY_COMPONENTS ],
-  bootstrap: [ DocsAppComponent ],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {}

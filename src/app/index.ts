@@ -1,2 +1,2 @@
-export { DocsAppComponent } from './app.component';
+export { AppComponent } from './app.component';
 export { AppModule } from './app.module';
