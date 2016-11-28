@@ -39,15 +39,15 @@
     "Jeremy Smartt <jeremy.smartt@teradata.com>"
   ],
   "dependencies": {
-    "@covalent/chips": "0.8.1",
-    "@covalent/core": "0.8.1",
-    "@covalent/charts": "0.8.1",
-    "@covalent/data-table": "0.8.1",
-    "@covalent/file-upload": "0.8.1",
-    "@covalent/highlight": "0.8.1",
-    "@covalent/http": "0.8.1",
-    "@covalent/json-formatter": "0.8.1",
-    "@covalent/markdown": "0.8.1",
+    "@covalent/chips": "0.9.1",
+    "@covalent/core": "0.9.1",
+    "@covalent/charts": "0.9.1",
+    "@covalent/data-table": "0.9.1",
+    "@covalent/file-upload": "0.9.1",
+    "@covalent/highlight": "0.9.1",
+    "@covalent/http": "0.9.1",
+    "@covalent/json-formatter": "0.9.1",
+    "@covalent/markdown": "0.9.1",
     "ts-helpers": "^1.1.1"
   },
   "devDependencies": {
