@@ -13,7 +13,7 @@
   "scripts": {
     "tslint": "tslint -c ./tslint.json \"./src/**/*.ts\" -e \"./src/**/typings.d.ts\" -e \"./src/environments/**\"",
     "ngbuild": "rm -rf ./dist && ng build",
-    "build": "gulp build && cd electron && npm install && cd ..",
+    "build": "gulp build",
     "electron": "npm run prepare && electron dist",
     "package": "npm run ngbuild && npm run build && ./node_modules/electron-packager/cli.js dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite"
   },
