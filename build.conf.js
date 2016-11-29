@@ -44,8 +44,7 @@ module.exports = {
       '!src/index.html'
     ],
     electronrequiredfiles: [
-      'src/package.json',
-      'src/main.js',
+      'electron/**',
       'src/app/assets/**'
     ]
   }
