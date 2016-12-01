@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<td-layout #layout sidenavTitle="Covalent Electron" logo="app/assets/icons/teradata.svg">
+  <md-nav-list menu-items>
+    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
+      <md-icon>{{item.icon}}</md-icon>
+      {{item.title}}
+    </a>
+  </md-nav-list>
+  <td-layout-nav toolbarTitle="Covalent Electron" logo="app/assets/icons/teradata.svg">
+    <router-outlet></router-outlet>
+  </td-layout-nav>
+</td-layout>

@@ -1,14 +1,156 @@
-<td-layout-card-over>
-  <div layout="row" layout-align="start center">
-    <md-icon class="md-icon-svg-lg" svgSrc="/icons/covalent.svg"></md-icon>
-    <div>
-      <md-card-title>Teradata Electron Covalent UI Platform</md-card-title>
-    <md-card-subtitle>built on Teradata Covalent</md-card-subtitle>
+<div layout-gt-xs="row" layout-wrap flex tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+  <div flex-gt-xs="60" layout-gt-xs="column">
+    <md-card flex>
+      <md-card-title>Card Title</md-card-title>
+      <td-charts [margin]="{top: 60, bottom: 40}"
+                chartHeight="622"
+                [shadow]="true">
+        <td-axis-x [link]="chartLine1" [ticks]="true" [show]="true" [grid]="false" legend=""></td-axis-x>
+        <td-axis-y-left [link]="chartLine1" [ticks]="true" [show]="true" [grid]="true" legend="Sales($)"></td-axis-y-left>
+        <td-chart-line #chartLine1
+                dataSrc="data/datatime.csv"
+                timeSeries="true"
+                bottomAxis="date"
+                [columns]="['close']"
+                [titles]="['close']"
+                [colors]="['#00B0FF']"
+                [transition]="true"
+                transitionDuration="900"
+                transitionDelay="500">
+        </td-chart-line>
+      </td-charts>
+    </md-card>
+  </div>
+  <div flex-gt-xs="40" layout-gt-xs="column">
+    <div layout-gt-xs="row">
+      <div flex-gt-xs="50" layout-gt-xs="column">
+        <md-card flex>
+          <md-card-title>Card Title</md-card-title>
+          <div class="pad-left pad-right">
+            <div class="md-display-2 push-bottom-sm">{{ 374 | digits }}</div>
+            <div class="md-display-1 tc-dark-red-B100">9.44%</div>
+          </div>
+        </md-card>
+        <md-card flex>
+          <md-card-title>Card Title</md-card-title>
+          <div class="pad-left pad-right">
+            <div class="md-display-2 push-bottom-sm">{{ 10252 | digits }}</div>
+            <div class="md-display-1 tc-dark-light-green-B100">4.77%</div>
+          </div>
+        </md-card>
+      </div>
+      <div flex-gt-xs="50" layout-gt-xs="column">
+        <md-card flex>
+          <md-card-title>Card Title</md-card-title>
+          <md-list>
+            <md-list-item>
+              <h3 md-line>Title</h3>
+              <p md-line>description text here</p>
+            </md-list-item>
+            <md-list-item>
+              <h3 md-line>Title</h3>
+              <p md-line>description text here</p>
+            </md-list-item>
+            <md-list-item>
+              <h3 md-line>Title</h3>
+              <p md-line>description text here</p>
+            </md-list-item>
+            <md-list-item>
+              <h3 md-line>Title</h3>
+              <p md-line>description text here</p>
+            </md-list-item>
+            <md-list-item>
+              <h3 md-line>Title</h3>
+              <p md-line>description text here</p>
+            </md-list-item>
+            <md-list-item>
+              <h3 md-line>Title</h3>
+              <p md-line>description text here</p>
+            </md-list-item>
+          </md-list>
+        </md-card>
+      </div>
     </div>
   </div>
-  <md-divider></md-divider>
-  <md-card-actions>
-    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Gitter Chat</a>
-    <a href="https://github.com/teradata/covalent/issues" target="_blank" md-button>Bug or Feature Request</a>
-  </md-card-actions>
-</td-layout-card-over>
+  <div flex-gt-xs="20">
+    <div layout="row">
+      <md-card flex>
+        <md-card-title>Card Title</md-card-title>
+        <div class="pad-left pad-right pad-bottom">
+          <div class="md-display-2 push-top-sm push-sm">2m 4s</div>
+          <div class="md-display-1 tc-dark-light-green-B100">8.89%</div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div flex-gt-xs="20">
+    <div layout="row">
+      <md-card flex>
+        <md-card-title>Card Title</md-card-title>
+        <div class="pad-left pad-right pad-bottom">
+          <div class="md-display-2 push-bottom-sm">66.35%</div>
+          <div class="md-display-1 tc-dark-light-green-B100">0.13%</div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div flex-gt-xs="20">
+    <div layout="row">
+      <md-card flex>
+        <md-card-title>Card Title</md-card-title>
+        <div class="pad-left pad-right pad-bottom">
+          <div class="md-display-2 push-bottom-sm">60.42%</div>
+          <div class="md-display-1 tc-dark-light-green-B100">1.52%</div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div flex-gt-xs="20">
+    <div layout="row">
+      <md-card flex>
+        <md-card-title>Card Title</md-card-title>
+        <div class="pad-left pad-right pad-bottom">
+          <div class="md-display-2 push-bottom-sm">79.25%</div>
+          <td-charts [margin]="{top: 10, bottom: 5}"
+                    chartHeight="210"
+                    [shadow]="true">
+            <td-chart-line #sparkLine1 dataSrc="data/datatime.csv"
+                          timeSeries="true"
+                          bottomAxis="date"
+                          [columns]="['close']"
+                          [titles]="['close']"
+                          [colors]="['#00B0FF']"
+                          [transition]="true"
+                          transitionDuration="500"
+                          transitionDelay="1000">
+            </td-chart-line>
+          </td-charts>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div flex-gt-xs="20">
+    <div layout="row">
+      <md-card flex>
+        <md-card-title>Card Title</md-card-title>
+        <div class="pad-left pad-right pad-bottom">
+          <div class="md-display-2 push-bottom-sm">2m 3s</div>
+          <td-charts [margin]="{top: 10, bottom: 5}"
+                    chartHeight="210"
+                    [shadow]="true">
+            <td-chart-line #sparkLine2 dataSrc="data/datatime.csv"
+                          timeSeries="true"
+                          bottomAxis="date"
+                          [columns]="['close']"
+                          [titles]="['close']"
+                          [colors]="['#00B0FF']"
+                          [transition]="true"
+                          transitionDuration="500"
+                          transitionDelay="1000">
+            </td-chart-line>
+          </td-charts>
+        </div>
+      </md-card>
+    </div>
+  </div>
+</div>
