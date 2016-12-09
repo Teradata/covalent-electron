@@ -4,7 +4,7 @@ var gulp = require('gulp-help')(require('gulp'));
 var config = require('../build.conf');
 var path = require('path');
 
-gulp.task('build', 'Copy the electron files', function() {
+gulp.task('copy', 'Copy the electron files', function() {
   return gulp
     .src(config.paths.electronrequiredfiles, {base: "."})
     .pipe(gulp.dest(function(file) {
