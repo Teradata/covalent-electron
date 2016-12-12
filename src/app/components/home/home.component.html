@@ -10,5 +10,13 @@
   <md-card-actions>
     <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Gitter Chat</a>
     <a href="https://github.com/teradata/covalent/issues" target="_blank" md-button>Bug or Feature Request</a>
+    <template let-file let-last="last" ngFor [ngForOf]="files">
+        <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
+          <p><md-icon>{{file.icon}}</md-icon> {{file.name}}</p>
+          <span flex></span>
+        </a>
+        <div #expansionContainer="tdContainer" tdContainer></div>
+        <md-divider *ngIf="!last"></md-divider>
+    </template>
   </md-card-actions>
 </td-layout-card-over>
