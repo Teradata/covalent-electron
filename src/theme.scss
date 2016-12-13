@@ -10,7 +10,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $primary: md-palette($md-orange, 800);
-$accent:  md-palette($md-light-blue, 900, A100, A400);
+$accent:  md-palette($md-light-blue, 600, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $warn:    md-palette($md-red, 600);
