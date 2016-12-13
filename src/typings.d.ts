@@ -10,3 +10,4 @@ declare var require: NodeRequire;
 // Need to do this until able to modify webpack config in Angular CLI
 declare var fs: any;
 declare var electron: any;
+declare var path: any;
