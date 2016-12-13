@@ -35,7 +35,8 @@ export class HomeComponent implements AfterViewInit {
     let process: any  = electron.remote.process;
     // get the home dir from the process object environment variables
     let homeDir: string = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
-    this.loadFiles(homeDir);
+    this.prevPath = homeDir;
+    this.loadFiles('');
   }
 
   /**
@@ -46,7 +47,7 @@ export class HomeComponent implements AfterViewInit {
    */
   loadFiles(pathEnd: string, expansionContainer?: ViewContainerRef): void {
     // append the end of the path to the previous directories that have been traversed
-    let newPath: string = this.prevPath + '/' + pathEnd;
+    let newPath: string = path.join(this.prevPath, pathEnd);
     // If it is a directory get traverse more
     if (fs.lstatSync(newPath).isDirectory()) {
       this.files = [];
@@ -55,7 +56,7 @@ export class HomeComponent implements AfterViewInit {
         let fileObj: IFile = {
           path: newPath,
           name: file,
-          icon: fs.lstatSync(newPath + '/' + file).isDirectory() ? 'folder' : 'description',
+          icon: fs.lstatSync(path.join(newPath, file)).isDirectory() ? 'folder' : 'description',
           expansion_visible: false,
         };
         this.files.push(fileObj);
