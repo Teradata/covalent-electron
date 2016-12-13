@@ -15,11 +15,14 @@ import { CovalentChartsModule } from '@covalent/charts';
 import { CovalentDataTableModule } from '@covalent/data-table';
 import { CovalentPagingModule } from '@covalent/paging';
 import { CovalentSearchModule } from '@covalent/search';
+import { FileExpansionPanelComponent, TdContainerDirective } from '../components/';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FileExpansionPanelComponent,
+    TdContainerDirective,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,
@@ -39,7 +42,10 @@ import { CovalentSearchModule } from '@covalent/search';
   providers: [
     appRoutingProviders,
   ], // additional providers needed for this module
-  entryComponents: [ TD_LOADING_ENTRY_COMPONENTS ],
+  entryComponents: [
+    TD_LOADING_ENTRY_COMPONENTS,
+    FileExpansionPanelComponent,
+  ],
   bootstrap: [ AppComponent ],
 })
 export class AppModule {}

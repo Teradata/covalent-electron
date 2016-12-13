@@ -15,7 +15,7 @@
       "../node_modules/@types"
     ],
     "types": [
-      "jasmine", "hammerjs"
+      "node", "jasmine", "hammerjs"
     ]
   }
 }

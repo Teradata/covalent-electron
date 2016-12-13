@@ -7,4 +7,9 @@
     md-divider {
         border-top-color: rgba(black, 0.12);
     }
+    a.directory {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
