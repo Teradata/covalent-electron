@@ -1,4 +1,5 @@
 const electron = require('electron');
+var client = require('electron-connect').client;
 // Module to control application life.
 const app = electron.app;
 const protocol = electron.protocol;
@@ -49,6 +50,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  // Connect to server process
+  client.create(mainWindow, {"sendBounds":false});  
 }
 
 // This method will be called when Electron has finished
