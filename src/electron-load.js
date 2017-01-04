@@ -3,5 +3,6 @@
 var fs = require('fs');
 var electron = require('electron');
 var path = require('path');
-module.paths.push('/Users/js186150/Documents/public/covalent-electron/dist/node_modules');
+// Add all 3rd party node_modules included in the Electron app to be able to be used
+module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));
 require('electron-connect').client.create();
