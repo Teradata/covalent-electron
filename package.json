@@ -80,7 +80,7 @@
     "ts-node": "1.2.1",
     "tslint": "^3.15.1",
     "typescript": "2.0.10",
-    "electron": "^1.4.4",
+    "electron": "^1.4.13",
     "electron-packager": "^8.1.0",
     "electron-connect": "^0.6.1",
     "run-sequence": "^1.2.2"

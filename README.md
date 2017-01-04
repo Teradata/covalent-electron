@@ -11,12 +11,24 @@ Covalent is a reusable UI platform from Teradata for building web applications w
 Covalent-Electron is the Electron Platform to build desktop apps using Covalent and Electron
 ## Setup
 
+### Production Build
+
 * Ensure you have Node 4.4 and NPM 3+ installed.
 * Install `npm install`
 * Create Electron package `npm run package`
+** For a system running OS X the dist-app/Covalent-darwin-x64/Covalent.app folder generated can be executed. 
+** For a Windows x64 build the Covalent-win32-x64/Covalent.exe can be executed.
 
-For a system running OS X the dist-app/Covalent-darwin-x64/Covalent.app folder generated can be executed. 
-For a Windows x64 build the Covalent-win32-x64/Covalent.exe can be executed.
+### Development Build
+The development build include the ability to "live-reload" code in both the renderer process and the main electron application.
+After running the commands below simply save a file in the code base and it will be automatically refreshed in the running Electron application
+
+* Ensure you have Node 4.4 and NPM 3+ installed.
+* Install `npm install`
+* Create Electron package and run live-reload `npm run live-reload`
+
+Alternatively if you want to also open the Dev Tools while running live-reload run this command instead
+* Create Electron package and run live-reload `npm run live-reload -- --openDevTools`
 
 ---
 

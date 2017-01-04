@@ -1,5 +1,9 @@
 const electron = require('electron');
-var client = require('electron-connect').client;
+var client;
+// Connect to live update if LIVE_UPDATE env variable is true
+if (process.env.LIVE_UPDATE === "true") {
+  client = require('electron-connect').client;
+}
 // Module to control application life.
 const app = electron.app;
 const protocol = electron.protocol;
@@ -41,7 +45,9 @@ function createWindow () {
   }));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  if (process.env.OPEN_DEV_TOOLS === "true") {
+    mainWindow.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -51,8 +57,10 @@ function createWindow () {
     mainWindow = null;
   });
 
-  // Connect to server process
-  client.create(mainWindow, {"sendBounds":false});  
+  // Connect to live update if LIVE_UPDATE env variable is true
+  if (client) {
+    client.create(mainWindow, {"sendBounds":false});
+  }
 }
 
 // This method will be called when Electron has finished
