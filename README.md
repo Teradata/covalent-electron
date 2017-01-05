@@ -6,6 +6,7 @@
 [![Dependency Status](https://dependencyci.com/github/Teradata/covalent/badge)](https://dependencyci.com/github/Teradata/covalent)
 
 <img alt="Covalent" src="https://cdn.rawgit.com/Teradata/covalent-electron/develop/src/app/assets/icons/covalent-and-electron.svg" width="642">
+
 Covalent is a reusable UI platform from Teradata for building web applications with common standards and tooling. It is based on Angular 2 and Material Design.
 Covalent-Electron is the Electron Platform to build desktop apps using Covalent and Electron
 ## Setup
