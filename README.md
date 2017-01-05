@@ -20,7 +20,7 @@ Covalent-Electron is the Electron Platform to build desktop apps using Covalent 
  * For a Windows x64 build the Covalent-win32-x64/Covalent.exe can be executed.
 
 ### Development Build
-The development build include the ability to "live-reload" code in both the renderer process and the main electron application.
+The development build includes the ability to "live-reload" code in both the renderer process and the main electron application.
 After running the commands below simply save a file in the code base and it will be automatically refreshed in the running Electron application
 
 * Ensure you have Node 4.4 and NPM 3+ installed.
