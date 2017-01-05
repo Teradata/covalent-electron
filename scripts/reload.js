@@ -5,6 +5,18 @@ var spawn = require('child_process').spawn;
 var runSequence = require('run-sequence');
 var electron = require('electron-connect').server.create();
 
+function getSpawn(command, args, options) {
+  if (!/^win/.test(process.platform)) { // linux
+    return spawn(command, args, {
+      stdio: 'inherit'
+    });
+  } else { // windows
+    return spawn('cmd', ['/s', '/c', command].concat(args), {
+      stdio: [null, process.stdout, process.stderr]
+    });
+  }
+}
+
 // when using live-update mode set some environment variables so electron will use electron connect
 process.env.LIVE_UPDATE = "true";
 if (process.argv.find(function(args) {
@@ -21,7 +33,7 @@ gulp.task('watch', ['start-watch-src','watch-electron'], function (cb) {
 
 // kicks off all the tasks to run and watch for changes on src files
 gulp.task('start-watch-src', function (cb) {
-  var cmd = spawn('ng', ['build'], {stdio: 'inherit'});
+  var cmd = getSpawn('ng', ['build']);
   cmd.on('close', function (code) {
       runSequence('copy','copy-electron-connect', 'start-electron','watch-src');
       cb(code);
@@ -30,7 +42,7 @@ gulp.task('start-watch-src', function (cb) {
 
 // called when a src file has been changed
 gulp.task('reload', function (cb) {
-  var cmd = spawn('ng', ['build'], {stdio: 'inherit'});
+  var cmd = getSpawn('ng', ['build']);
   cmd.on('close', function (code) {
       runSequence('copy', 'copy-electron-connect', 'reload-electron');
       cb(code);
@@ -62,7 +74,7 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
 
 // called when an electron file has been changed
 gulp.task('restart', function (cb) {
-  var cmd = spawn('echo', ['"restarting"'], {stdio: 'inherit'});
+  var cmd = getSpawn('echo', ['"restarting"']);
   cmd.on('close', function (code) {
       runSequence('copy', 'copy-electron-connect', 'restart-electron');
       cb(code);
