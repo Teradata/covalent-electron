@@ -18,8 +18,8 @@ export interface IFile {
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.component.html',
-  styleUrls: ['home.component.scss'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   viewProviders: [ FileExpansionService ],
 })
 export class HomeComponent implements AfterViewInit {
