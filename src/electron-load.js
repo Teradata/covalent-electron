@@ -11,6 +11,7 @@ module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules
 if (electron.remote.process.env.LIVE_UPDATE === "true") {
     client = require('electron-connect').client.create();
     client.on("reloadit", function() {
+      electron.remote.getCurrentWindow().removeAllListeners();
       electron.remote.getCurrentWindow().loadURL(url.format({
             pathname: 'index.html',
             protocol: 'file:',
