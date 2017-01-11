@@ -26,7 +26,7 @@
     "Jeremy Smartt <jeremy.smartt@teradata.com>"
   ],
   "dependencies": {
-    "monaco-editor": "0.7.0"
+    "monaco-editor": "^0.7.0"
   },
   "devDependencies": {
     "electron": "^1.4.1"
