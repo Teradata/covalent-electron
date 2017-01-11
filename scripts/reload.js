@@ -35,7 +35,7 @@ gulp.task('watch', ['start-watch-src','watch-electron'], function (cb) {
 gulp.task('start-watch-src', function (cb) {
   var cmd = getSpawn('ng', ['build']);
   cmd.on('close', function (code) {
-      runSequence('copy','copy-electron-connect', 'start-electron','watch-src');
+      runSequence('copy','copy-electron-connect', 'npm-install', 'start-electron','watch-src');
       cb(code);
   });
 });
@@ -44,7 +44,7 @@ gulp.task('start-watch-src', function (cb) {
 gulp.task('reload', function (cb) {
   var cmd = getSpawn('ng', ['build']);
   cmd.on('close', function (code) {
-      runSequence('copy', 'copy-electron-connect', 'reload-electron');
+      runSequence('copy', 'copy-electron-connect', 'npm-install', 'reload-electron');
       cb(code);
   });
 });
@@ -52,6 +52,14 @@ gulp.task('reload', function (cb) {
 // copy over the electron-connect node_module to the dist dir
 gulp.task('copy-electron-connect', function () {
     gulp.src(['node_modules/electron-connect/**'], {base: 'node_modules/'}).pipe(gulp.dest('dist/node_modules'));
+});
+
+// run npm install inside the dist dir
+gulp.task('npm-install', function (cb) {
+  var cmd = getSpawn('npm', ['run', 'npm-install']);
+  cmd.on('close', function (code) {
+      cb(code);
+  });
 });
 
 // starts electron

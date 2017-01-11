@@ -8,8 +8,14 @@
   </div>
   <md-divider></md-divider>
   <md-card-actions>
-    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Gitter Chat</a>
-    <a href="https://github.com/teradata/covalent/issues" target="_blank" md-button>Bug or Feature Request</a>
+    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent Monaco Code Editor</a>
+    <td-monaco-editor #monaco width="720px" height="300px" editorLanguage="javascript"></td-monaco-editor>
+    <button md-raised-button color="primary" (click)="saveEditorValue(monaco)">Get Editor Content</button>
+    <div>&nbsp;</div>
+    <div>Current Editor Value:</div>
+    <div>{{editorValue}}</div>
+    <md-divider></md-divider>
+    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent File Traverser</a>
     <template let-file let-last="last" ngFor [ngForOf]="files">
         <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
           <p><md-icon>{{file.icon}}</md-icon> {{file.name}}</p>

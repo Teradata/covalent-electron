@@ -26,6 +26,7 @@ export class HomeComponent implements AfterViewInit {
 
   files: IFile[] = [];
   prevPath: string = '';
+  editorValue: string = '';
 
   constructor(private _router: Router,
               private _fileExpansionService: FileExpansionService) {}
@@ -83,5 +84,11 @@ export class HomeComponent implements AfterViewInit {
       instance.filePath = fileObj.path;
       instance.modifiedDate = fileStats.mtime;
     }
+  }
+
+  saveEditorValue(monacoEditor: any): void {
+    monacoEditor.getEditorContent().subscribe((value: string) => {
+      this.editorValue = value;
+    });
   }
 }
