@@ -14,8 +14,10 @@
     <div>&nbsp;</div>
     <div>Current Editor Value:</div>
     <div>{{editorValue}}</div>
-    <md-divider></md-divider>
-    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent File Traverser</a>
+    <hr>
+    <br />
+    <br />
+    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent File Picker</a>
     <template let-file let-last="last" ngFor [ngForOf]="files">
         <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
           <p><md-icon>{{file.icon}}</md-icon> {{file.name}}</p>
