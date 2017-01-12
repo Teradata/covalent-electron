@@ -6,10 +6,11 @@ import { HomeComponent } from './components/home/home.component';
 import { appRoutes, appRoutingProviders } from './app.routes';
 
 import { CovalentCoreModule } from '@covalent/core';
-import { CovalentHttpModule, IHttpInterceptor } from '@covalent/http';
+import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentChartsModule } from '@covalent/charts';
+import { CovalentMonacoEditorModule } from '../platform/monaco-editor';
 import { FileExpansionPanelComponent, TdContainerDirective } from '../components/';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FileExpansionPanelComponent, TdContainerDirective } from '../components
     CovalentMarkdownModule.forRoot(),
     CovalentChartsModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
+    CovalentMonacoEditorModule.forRoot(),
     appRoutes,
   ], // modules needed to run this module
   providers: [

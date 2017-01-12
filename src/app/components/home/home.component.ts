@@ -26,6 +26,7 @@ export class HomeComponent implements AfterViewInit {
 
   files: IFile[] = [];
   prevPath: string = '';
+  editorValue: string = '';
 
   constructor(private _router: Router,
               private _fileExpansionService: FileExpansionService) {}
@@ -83,5 +84,64 @@ export class HomeComponent implements AfterViewInit {
       instance.filePath = fileObj.path;
       instance.modifiedDate = fileStats.mtime;
     }
+  }
+
+  saveEditorValue(monacoEditor: any): void {
+    monacoEditor.getValue().subscribe((value: string) => {
+      this.editorValue = value;
+    });
+  }
+
+  registerCustomLanguage(monacoEditor: any): void {
+    let language: any = {
+      id: 'mySpecialLanguage',
+      monarchTokensProvider: [
+          ['/\\[error.*/', 'custom-error'],
+          ['/\\[notice.*/', 'custom-notice'],
+          ['/\\[info.*/', 'custom-info'],
+          ['/\\[[a-zA-Z 0-9:]+\\]/', 'custom-date'],
+      ],
+      monarchTokensProviderCSS: `
+        .monaco-editor .token.custom-info {
+          color: grey;
+        }
+        .monaco-editor .token.custom-error {
+          color: red;
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+        .monaco-editor .token.custom-notice {
+          color: orange;
+        }
+
+        .monaco-editor .token.custom-date {
+          color: green;
+        }
+      `,
+      completionItemProvider: [
+        {
+          label: 'simpleText',
+          kind: 'monaco.languages.CompletionItemKind.Text',
+        }, {
+          label: 'testing',
+          kind: 'monaco.languages.CompletionItemKind.Keyword',
+          insertText: 'testing({{condition}})',
+        },
+        {
+          label: 'ifelse',
+          kind: 'monaco.languages.CompletionItemKind.Snippet',
+          insertText: [
+            'if ({{condition}}) {',
+            '\t{{}}',
+            '} else {',
+            '\t',
+            '}',
+          ].join('\n'),
+          documentation: 'If-Else Statement',
+        },
+      ],
+    };
+    monacoEditor.registerLanguage(language);
+    monacoEditor.language = 'mySpecialLanguage';
   }
 }

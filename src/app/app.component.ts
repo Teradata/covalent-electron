@@ -9,6 +9,13 @@ import { MdIconRegistry } from '@angular/material';
 })
 export class AppComponent {
 
+  routes: Object[] = [{
+      icon: 'home',
+      route: '.',
+      title: 'Home',
+    },
+  ];
+
   constructor(private _iconRegistry: MdIconRegistry,
               private _domSanitizer: DomSanitizer,
               viewContainerRef: ViewContainerRef) {
@@ -16,10 +23,4 @@ export class AppComponent {
       this._domSanitizer.bypassSecurityTrustResourceUrl('app/assets/icons/covalent.svg'));
     }
 
-  routes: Object[] = [{
-      icon: 'home',
-      route: '.',
-      title: 'Home',
-    },
-  ];
 }
