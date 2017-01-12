@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -105,6 +105,9 @@ export class TdMonacoEditorComponent implements AfterViewInit {
     </body>
     </html>`;
 
+
+  @Output('editorValueChange') onEditorValueChange: EventEmitter<void> = new EventEmitter<void>();
+
   /**
    * editorValue?: string
    * Value in the Editor after async getEditorContent was called
@@ -115,6 +118,7 @@ export class TdMonacoEditorComponent implements AfterViewInit {
     if (this._webview) {
         this._webview.send('setEditorContent', editorValue);
     }
+    this.onEditorValueChange.emit(undefined);
   }
 
   // no getter for editor Value because need to use async call
@@ -187,8 +191,10 @@ export class TdMonacoEditorComponent implements AfterViewInit {
             this._subject.next(this._editorValue);
             this._subject.complete();
             this._subject = new Subject();
+            this.onEditorValueChange.emit(undefined);
         } else if (event.channel === 'onEditorContentChange') {
             this._editorValue = event.args[0];
+            this.onEditorValueChange.emit(undefined);
         }
     });
 
