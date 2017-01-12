@@ -12,9 +12,9 @@ export class TdMonacoEditorComponent implements OnInit {
   private _editorStyle: string = 'border:1px solid grey;';
   private _appPath: string = electron.remote.app.getAppPath();
   private _webview: any;
-  private _editorValue: string = '';
-  private _editorTheme: string = 'vs';
-  private _editorLanguage: string = 'javascript';
+  private _value: string = '';
+  private _theme: string = 'vs';
+  private _language: string = 'javascript';
   private _subject: Subject<string> = new Subject();
 
 
@@ -25,14 +25,14 @@ export class TdMonacoEditorComponent implements OnInit {
   @Output('editorValueChange') onEditorValueChange: EventEmitter<void> = new EventEmitter<void>();
 
   /**
-   * editorValue?: string
+   * value?: string
    * Value in the Editor after async getEditorContent was called
    */
-  @Input('editorValue')
-  set editorValue(editorValue: string) {
-    this._editorValue = editorValue;
+  @Input('value')
+  set value(value: string) {
+    this._value = value;
     if (this._webview) {
-        this._webview.send('setEditorContent', editorValue);
+        this._webview.send('setEditorContent', value);
     }
     this.onEditorValueChange.emit(undefined);
   }
@@ -44,32 +44,32 @@ export class TdMonacoEditorComponent implements OnInit {
    * getEditorContent?: function
    * Returns the content within the monaco editor
    */
-  getEditorContent(): Observable<string> {
+  getValue(): Observable<string> {
       this._webview.send('getEditorContent');
       return this._subject.asObservable();
   }
 
   /**
-   * editorLanguage?: string
+   * language?: string
    * language used in editor
    */
-  @Input('editorLanguage')
-  set editorLanguage(editorLanguage: string) {
-    this._editorLanguage = editorLanguage;
+  @Input('language')
+  set language(language: string) {
+    this._language = language;
     if (this._webview) {
-        this._webview.send('setEditorLanguage', editorLanguage);
+        this._webview.send('setLanguage', language);
     }
   }
-  get editorLanguage(): string {
-    return this._editorLanguage;
+  get language(): string {
+    return this._language;
   }
 
   /**
-   * registerEditorLanguage?: function
+   * registerLanguage?: function
    * Registers a custom Language within the monaco editor
    */
-  registerEditorLanguage(language: any): void {
-      this._webview.send('registerEditorLanguage', language);
+  registerLanguage(language: any): void {
+      this._webview.send('registerLanguage', language);
   }
 
   /**
@@ -90,13 +90,13 @@ export class TdMonacoEditorComponent implements OnInit {
    */
   @Input('theme')
   set theme(theme: string) {
-    this._editorTheme = theme;
+    this._theme = theme;
     if (this._webview) {
         this._webview.send('setEditorOptions', {'theme': theme});
     }
   }
   get theme(): string {
-    return this._editorTheme;
+    return this._theme;
   }
 
   ngOnInit(): void {
@@ -117,6 +117,8 @@ export class TdMonacoEditorComponent implements OnInit {
         <script src="file:///node_modules/monaco-editor/min/vs/loader.js"></script>
         <script>
             var editor;
+            var theme = '${this.theme}';
+
             require.config({
                 baseUrl: '${this._appPath}/node_modules/monaco-editor/min'
             });
@@ -125,9 +127,9 @@ export class TdMonacoEditorComponent implements OnInit {
 
             require(['vs/editor/editor.main'], function() {
                 editor = monaco.editor.create(document.getElementById('container'), {
-                    value: '${this._editorValue}',
-                    language: '${this.editorLanguage}',
-                    theme: '${this._editorTheme}',
+                    value: '${this._value}',
+                    language: '${this.language}',
+                    theme: '${this._theme}',
                 });
                 editor.getModel().onDidChangeContent( (e)=> {
                     ipcRenderer.sendToHost("onEditorContentChange", editor.getValue());
@@ -150,17 +152,18 @@ export class TdMonacoEditorComponent implements OnInit {
             });
 
             // set the language of the editor from what was sent from the mainview
-            ipcRenderer.on('setEditorLanguage', function(event, data){
+            ipcRenderer.on('setLanguage', function(event, data){
                 var currentValue = editor.getValue();
                 editor.dispose();
                 editor = monaco.editor.create(document.getElementById('container'), {
                     value: currentValue,
                     language: data,
+                    theme: theme,
                 });
             });
 
             // register a new language with editor
-            ipcRenderer.on('registerEditorLanguage', function(event, data){
+            ipcRenderer.on('registerLanguage', function(event, data){
                 var currentValue = editor.getValue();
                 editor.dispose();
 
@@ -213,13 +216,13 @@ export class TdMonacoEditorComponent implements OnInit {
     // Process the data from the webview
     this._webview.addEventListener('ipc-message', (event: any) => {
         if (event.channel === 'editorContent') {
-            this._editorValue = event.args[0];
-            this._subject.next(this._editorValue);
+            this._value = event.args[0];
+            this._subject.next(this._value);
             this._subject.complete();
             this._subject = new Subject();
             this.onEditorValueChange.emit(undefined);
         } else if (event.channel === 'onEditorContentChange') {
-            this._editorValue = event.args[0];
+            this._value = event.args[0];
             this.onEditorValueChange.emit(undefined);
         }
     });

@@ -87,7 +87,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   saveEditorValue(monacoEditor: any): void {
-    monacoEditor.getEditorContent().subscribe((value: string) => {
+    monacoEditor.getValue().subscribe((value: string) => {
       this.editorValue = value;
     });
   }
@@ -141,7 +141,7 @@ export class HomeComponent implements AfterViewInit {
         },
       ],
     };
-    monacoEditor.registerEditorLanguage(language);
-    monacoEditor.editorLanguage = 'mySpecialLanguage';
+    monacoEditor.registerLanguage(language);
+    monacoEditor.language = 'mySpecialLanguage';
   }
 }
