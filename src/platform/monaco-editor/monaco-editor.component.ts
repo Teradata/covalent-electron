@@ -106,6 +106,10 @@ export class TdMonacoEditorComponent implements AfterViewInit {
     </html>`;
 
 
+ /**
+  * editorValueChange: function($event)
+  * Event emitted any time something changes the editor value
+  */
   @Output('editorValueChange') onEditorValueChange: EventEmitter<void> = new EventEmitter<void>();
 
   /**
