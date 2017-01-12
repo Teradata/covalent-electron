@@ -117,7 +117,7 @@ export class TdMonacoEditorComponent implements OnInit {
         <script src="file:///node_modules/monaco-editor/min/vs/loader.js"></script>
         <script>
             var editor;
-            var theme = '${this.theme}';
+            var theme = '${this._theme}';
 
             require.config({
                 baseUrl: '${this._appPath}/node_modules/monaco-editor/min'
