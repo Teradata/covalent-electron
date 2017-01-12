@@ -9,7 +9,7 @@
   <md-divider></md-divider>
   <md-card-actions>
     <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent Monaco Code Editor</a>
-    <td-monaco-editor #monaco style="width:720px;height:500px" editorStyle="border:1px solid grey;" editorLanguage="javascript"></td-monaco-editor>
+    <td-monaco-editor #monaco style="width:720px;height:500px" theme="vs-dark" editorStyle="border:1px solid grey;" editorLanguage="javascript"></td-monaco-editor>
     <button md-raised-button color="primary" (click)="saveEditorValue(monaco)">Get Editor Content</button>
     <button md-raised-button color="primary" (click)="monaco.editorValue = 'console.log()'">Set Content to console.log</button>
     <button md-raised-button color="primary" (click)="monaco.editorLanguage = 'sql'">Set Editor language to SQL</button>
