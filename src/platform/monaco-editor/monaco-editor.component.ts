@@ -10,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 export class TdMonacoEditorComponent implements OnInit {
 
   private _editorStyle: string = 'border:1px solid grey;';
-  private _appPath: string = electron.remote.app.getAppPath();
+  private _appPath: string = electron.remote.app.getAppPath().split('\\').join('/');
   private _webview: any;
   private _value: string = '';
   private _theme: string = 'vs';
