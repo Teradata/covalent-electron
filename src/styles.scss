@@ -1,17 +1,7 @@
-@import "theme";
-// You can add global styles to this file that will cascade like normal CSS
-
-// Active icon color in list nav
-md-nav-list {
-    [md-list-item].active {
-        md-icon[md-list-avatar] {
-            background-color: md-color($accent);
-            color: md-color($accent, default-contrast)
-        }
-        md-icon[md-list-icon] {
-            color: md-color($accent);
-        }
-    }
+// Electron styles
+.draggable {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }
 
 // Href line height wasn't right for md-icon-button
