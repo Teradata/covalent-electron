@@ -1,17 +1,5 @@
-.margin {
-    margin: -60px;
-}
-.md-icon-logo {
-    width: 88px;
-}
-.md-icon-svg-lg {
-    height: 60px;
-    width: 80px;
-    margin-left: 16px;
-}
-.md-icon-ux {
-    width: 165px;
-}
-div[after-card] {
-    margin: 64px 8px 8px 8px;
+:host /deep/ {
+    md-sidenav .cdk-focus-trap-content > * {
+        height: 100%;
+    }
 }

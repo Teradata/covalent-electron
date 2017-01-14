@@ -1,33 +1,160 @@
-<td-layout-card-over>
-  <div layout="row" layout-align="start center">
-    <md-icon class="md-icon-svg-lg" svgIcon="assets:covalent"></md-icon>
-    <div>
-      <md-card-title>Teradata Electron Covalent UI Platform</md-card-title>
-      <md-card-subtitle>built on Teradata Covalent</md-card-subtitle>
+<div layout="column" layout-fill>
+    <div flex class="content md-content">
+        <md-sidenav-container fullscreen class="td-layout-manage-list md-content" flex layout="row">
+            <md-sidenav opened="true" align="start" mode="side" class="md-sidenav-left">
+                <div layout="column">
+                    <div flex layout="column">
+                        <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
+                            <span flex></span>
+                            <button md-icon-button><md-icon>sort</md-icon></button>
+                            <button md-icon-button><md-icon>settings</md-icon></button>
+                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                        </div>
+                        <div flex layout="column" class="md-content">
+                            <md-nav-list dense>
+                                <h3 md-subheader>Browse Files</h3>
+                                <template let-file let-last="last" ngFor [ngForOf]="files">
+                                    <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
+                                      <md-icon md-list-icon>{{file.icon}}</md-icon> {{file.name}}
+                                    </a>
+                                    <div #expansionContainer="tdContainer" tdContainer></div>
+                                    <md-divider *ngIf="!last"></md-divider>
+                                </template>
+                            </md-nav-list>
+                        </div>
+                    </div>
+                    <div class="td-layout-footer bgc-black pad-xs" layout="row">
+                        <button md-icon-button><md-icon>add</md-icon></button>
+                        <span flex></span>
+                        <button md-icon-button><md-icon>refresh</md-icon></button>
+                    </div>
+                </div>
+            </md-sidenav>
+            <md-sidenav align="end" mode="side" class="md-sidenav-right">
+                <div layout="column">
+                    <div flex layout="column">
+                        <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
+                            <span class="md-subhead push-left-sm">Connection Filters</span>
+                            <span flex></span>
+                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                        </div>
+                        <div layout="column" layout-margin class="md-content">
+                            <md-tab-group md-stretch-tabs>
+                                <md-tab>
+                                    <template md-tab-label>
+                                        Selection
+                                    </template>
+                                    <div layout="row" class="push-top-sm">
+                                        <md-select placeholder="Select option" flex>
+                                            <md-option value="1">
+                                                Include selected options
+                                            </md-option>
+                                            <md-option value="2">
+                                                Include non-selected options
+                                            </md-option>
+                                        </md-select>
+                                    </div>
+                                    <div class="pad">
+                                        <md-slide-toggle color="accent">appcenter-apps</md-slide-toggle>
+                                        <md-slide-toggle color="accent" checked="true">employee%</md-slide-toggle>
+                                        <md-slide-toggle color="accent">jsonDefault</md-slide-toggle>
+                                        <md-slide-toggle color="accent" checked="true">jsonTable</md-slide-toggle>
+                                        <md-slide-toggle color="accent" checked="true">listener_data</md-slide-toggle>
+                                        <md-slide-toggle color="accent">retailWebClicksData</md-slide-toggle>
+                                        <md-slide-toggle color="accent">rowdatasave</md-slide-toggle>
+                                    </div>
+                                </md-tab>
+                                <md-tab>
+                                    <template md-tab-label>
+                                        Expression
+                                    </template>
+                                    <h1>Terrible sushi restaurants</h1>
+                                    <p>...</p>
+                                </md-tab>
+                            </md-tab-group>
+                        </div>
+                    </div>
+                    <div flex layout="column">
+                        <div layout="row" layout-align="start center" class="bgc-grey-900">
+                            <span class="md-subhead push-left-sm">Visualization Options</span>
+                            <span flex></span>
+                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                        </div>
+                        <div layout="column" layout-margin class="md-content">
+                            <div layout="row">
+                                <md-select placeholder="Select type" flex>
+                                    <md-option value="1">
+                                        Vertical Bar
+                                    </md-option>
+                                    <md-option value="2">
+                                        Horizontal Bar
+                                    </md-option>
+                                </md-select>
+                            </div>
+                            <div class="pad" layout="column">
+                                <md-checkbox checked="true" class="push-bottom-sm">Show X Axis</md-checkbox>
+                                <md-checkbox checked="true" class="push-bottom-sm">Show Y Axis</md-checkbox>
+                                <md-checkbox checked="true" class="push-bottom-sm">Show Grid Lines</md-checkbox>
+                                <md-checkbox class="push-bottom-sm">Use Gradients</md-checkbox>
+                                <md-checkbox class="push-bottom-sm">Show Legend</md-checkbox>
+                                <md-checkbox checked="true" class="push-bottom-sm">Show X Axis Label</md-checkbox>
+                                <md-checkbox class="push-bottom-sm">Show Y Axis Label</md-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="td-layout-footer bgc-black pad-xs" layout="row">
+                        <button md-icon-button><md-icon>add</md-icon></button>
+                        <span flex></span>
+                        <button md-icon-button><md-icon>refresh</md-icon></button>
+                    </div>
+                </div>
+            </md-sidenav>
+            <div layout="column" flex layout-fill>
+                <div flex layout="column">
+                    <div flex layout="column">
+                        <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
+                            <button md-button (click)="saveEditorValue(monaco)">Get Editor Content</button>
+                            <button md-button (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
+                            <button md-button (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
+                            <button md-button (click)="registerCustomLanguage(monaco)">Use custom Language</button>
+                            <span flex></span>
+                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                        </div>
+                        <td-monaco-editor #monaco style="width:100%;height:98%;" theme="vs-dark" flex class="md-content" editorStyle="border:0;" editorLanguage="javascript"></td-monaco-editor>
+                    </div>
+                </div>
+                <div class="td-layout-footer pad-xs">
+                    <div layout="row" layout-align="start center">
+                        <span class="push-left">
+                            <md-icon class="text-md">description</md-icon>
+                            <span>local/my queries/filename.sql</span>
+                        </span>
+                        <span flex></span>
+                        <span class="push-left">
+                            <md-icon class="text-md">warning</md-icon>
+                            <span>8</span>
+                        </span>
+                        <span class="push-left">
+                            <md-icon class="text-md">error</md-icon>
+                            <span>2</span>
+                        </span>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        </md-sidenav-container>
     </div>
-  </div>
-  <md-divider></md-divider>
-  <md-card-actions>
-    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent Monaco Code Editor</a>
-    <td-monaco-editor #monaco style="width:720px;height:500px" theme="vs-dark" editorStyle="border:1px solid grey;" language="javascript"></td-monaco-editor>
-    <button md-raised-button color="primary" (click)="saveEditorValue(monaco)">Get Editor Content</button>
-    <button md-raised-button color="primary" (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
-    <button md-raised-button color="primary" (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
-    <button md-raised-button color="primary" (click)="registerCustomLanguage(monaco)">Use custom Language</button>
-    <div>&nbsp;</div>
-    <div>Current Editor Value:</div>
-    <div>{{editorValue}}</div>
-    <hr>
-    <br />
-    <br />
-    <a href="https://gitter.im/Teradata/covalent" target="_blank" md-button color="primary">Covalent File Picker</a>
-    <template let-file let-last="last" ngFor [ngForOf]="files">
-        <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
-          <p><md-icon>{{file.icon}}</md-icon> {{file.name}}</p>
-          <span flex></span>
-        </a>
-        <div #expansionContainer="tdContainer" tdContainer></div>
-        <md-divider *ngIf="!last"></md-divider>
-    </template>
-  </md-card-actions>
-</td-layout-card-over>
+    <div class="td-layout-footer pad-sm">
+        <div layout="row" layout-align="start center">
+            <span class="tc-green-600">
+                <md-icon class="text-md">check</md-icon>
+                <span>No Issues</span>
+            </span>
+            <span flex></span>
+            <span class="push-left tc-blue-600">
+                <md-icon class="text-md">system_update_alt</md-icon>
+                <span>2 Updates</span>
+            </span>
+        </div>
+    </div>
+</div>
