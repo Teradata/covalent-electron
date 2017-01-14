@@ -1,6 +1,6 @@
 {
   "name": "@covalent/monaco-editor",
-  "version": "0.9.1",
+  "version": "0.0.1",
   "description": "Teradata UI Platform Monaco Editor Module",
   "keywords": [
     "angular",
