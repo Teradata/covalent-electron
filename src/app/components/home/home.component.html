@@ -1,7 +1,7 @@
 <div layout="column" layout-fill>
     <div flex class="content md-content">
         <md-sidenav-container fullscreen class="td-layout-manage-list md-content" flex layout="row">
-            <md-sidenav opened="true" align="start" mode="side" class="md-sidenav-left">
+            <md-sidenav opened="true" align="start" mode="side" class="md-sidenav-left md-whiteframe-z1">
                 <div layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
@@ -10,17 +10,35 @@
                             <button md-icon-button><md-icon>settings</md-icon></button>
                             <button md-icon-button><md-icon>more_vert</md-icon></button>
                         </div>
-                        <div flex layout="column" class="md-content">
-                            <md-nav-list dense>
-                                <h3 md-subheader>Browse Files</h3>
-                                <template let-file let-last="last" ngFor [ngForOf]="files">
-                                    <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
-                                      <md-icon md-list-icon>{{file.icon}}</md-icon> {{file.name}}
-                                    </a>
-                                    <div #expansionContainer="tdContainer" tdContainer></div>
-                                    <md-divider *ngIf="!last"></md-divider>
-                                </template>
-                            </md-nav-list>
+                        <div flex layout="row">
+                            <div flex="none" class="bgc-dark-grey-B15">
+                                <md-button-toggle-group vertical #group="mdButtonToggleGroup">
+                                    <md-button-toggle value="files" mdTooltip="File Browser" mdTooltipPosition="after" checked="true">
+                                        <md-icon class="push-top push-bottom">folder_open</md-icon>
+                                    </md-button-toggle>
+                                    <md-button-toggle value="data" mdTooltip="Data Sources" mdTooltipPosition="after">
+                                        <md-icon class="push-top push-bottom">storage</md-icon>
+                                    </md-button-toggle>
+                                    <md-button-toggle value="right" mdTooltip="Filters" mdTooltipPosition="after">
+                                        <md-icon class="push-top push-bottom">filter_tilt_shift</md-icon>
+                                    </md-button-toggle>
+                                    <md-button-toggle value="justify" mdTooltip="Cloud Connections" mdTooltipPosition="after">
+                                        <md-icon class="push-top push-bottom">filter_drama</md-icon>
+                                    </md-button-toggle>
+                                </md-button-toggle-group>
+                            </div>
+                            <div flex layout="column" class="md-content">
+                                <md-nav-list dense>
+                                    <h3 md-subheader>Browse Files</h3>
+                                    <template let-file let-last="last" ngFor [ngForOf]="files">
+                                        <a md-list-item class="directory" (click)="loadFiles(file.name, expansionContainer.viewContainerRef)">
+                                        <md-icon md-list-icon>{{file.icon}}</md-icon> {{file.name}}
+                                        </a>
+                                        <div #expansionContainer="tdContainer" tdContainer></div>
+                                        <md-divider *ngIf="!last"></md-divider>
+                                    </template>
+                                </md-nav-list>
+                            </div>
                         </div>
                     </div>
                     <div class="td-layout-footer bgc-black pad-xs" layout="row">
@@ -30,80 +48,21 @@
                     </div>
                 </div>
             </md-sidenav>
-            <md-sidenav align="end" mode="side" class="md-sidenav-right">
+            <md-sidenav #preview align="end" mode="side" class="md-sidenav-right md-whiteframe-z1">
                 <div layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
-                            <span class="md-subhead push-left-sm">Connection Filters</span>
+                            <button md-icon-button (click)="preview.close()" mdTooltip="Close Preview" mdTooltipPosition="after"><md-icon>close</md-icon></button>
+                            <span class="md-subhead push-left-sm">Preview</span>
                             <span flex></span>
                             <button md-icon-button><md-icon>more_vert</md-icon></button>
                         </div>
                         <div layout="column" layout-margin class="md-content">
-                            <md-tab-group md-stretch-tabs>
-                                <md-tab>
-                                    <template md-tab-label>
-                                        Selection
-                                    </template>
-                                    <div layout="row" class="push-top-sm">
-                                        <md-select placeholder="Select option" flex>
-                                            <md-option value="1">
-                                                Include selected options
-                                            </md-option>
-                                            <md-option value="2">
-                                                Include non-selected options
-                                            </md-option>
-                                        </md-select>
-                                    </div>
-                                    <div class="pad">
-                                        <md-slide-toggle color="accent">appcenter-apps</md-slide-toggle>
-                                        <md-slide-toggle color="accent" checked="true">employee%</md-slide-toggle>
-                                        <md-slide-toggle color="accent">jsonDefault</md-slide-toggle>
-                                        <md-slide-toggle color="accent" checked="true">jsonTable</md-slide-toggle>
-                                        <md-slide-toggle color="accent" checked="true">listener_data</md-slide-toggle>
-                                        <md-slide-toggle color="accent">retailWebClicksData</md-slide-toggle>
-                                        <md-slide-toggle color="accent">rowdatasave</md-slide-toggle>
-                                    </div>
-                                </md-tab>
-                                <md-tab>
-                                    <template md-tab-label>
-                                        Expression
-                                    </template>
-                                    <h1>Terrible sushi restaurants</h1>
-                                    <p>...</p>
-                                </md-tab>
-                            </md-tab-group>
-                        </div>
-                    </div>
-                    <div flex layout="column">
-                        <div layout="row" layout-align="start center" class="bgc-grey-900">
-                            <span class="md-subhead push-left-sm">Visualization Options</span>
-                            <span flex></span>
-                            <button md-icon-button><md-icon>more_vert</md-icon></button>
-                        </div>
-                        <div layout="column" layout-margin class="md-content">
-                            <div layout="row">
-                                <md-select placeholder="Select type" flex>
-                                    <md-option value="1">
-                                        Vertical Bar
-                                    </md-option>
-                                    <md-option value="2">
-                                        Horizontal Bar
-                                    </md-option>
-                                </md-select>
-                            </div>
-                            <div class="pad" layout="column">
-                                <md-checkbox checked="true" class="push-bottom-sm">Show X Axis</md-checkbox>
-                                <md-checkbox checked="true" class="push-bottom-sm">Show Y Axis</md-checkbox>
-                                <md-checkbox checked="true" class="push-bottom-sm">Show Grid Lines</md-checkbox>
-                                <md-checkbox class="push-bottom-sm">Use Gradients</md-checkbox>
-                                <md-checkbox class="push-bottom-sm">Show Legend</md-checkbox>
-                                <md-checkbox checked="true" class="push-bottom-sm">Show X Axis Label</md-checkbox>
-                                <md-checkbox class="push-bottom-sm">Show Y Axis Label</md-checkbox>
-                            </div>
+                            No Preview Available
                         </div>
                     </div>
                     <div class="td-layout-footer bgc-black pad-xs" layout="row">
-                        <button md-icon-button><md-icon>add</md-icon></button>
+                        <button md-icon-button><md-icon>file_download</md-icon></button>
                         <span flex></span>
                         <button md-icon-button><md-icon>refresh</md-icon></button>
                     </div>
@@ -113,17 +72,22 @@
                 <div flex layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
-                            <button md-button (click)="saveEditorValue(monaco)">Get Editor Content</button>
-                            <button md-button (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
-                            <button md-button (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
-                            <button md-button (click)="registerCustomLanguage(monaco)">Use custom Language</button>
-                            <span flex></span>
-                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                            <span flex class="text-center md-caption">Covalent Electron</span>
+                            <button md-icon-button (click)="preview.toggle()" mdTooltip="Toggle Preview" mdTooltipPosition="before"><md-icon>remove_red_eye</md-icon></button>
+                            <button md-icon-button [mdMenuTriggerFor]="moreMenu"><md-icon>more_vert</md-icon></button>
+                            <md-menu #moreMenu="mdMenu" x-position="before">
+                                <button md-menu-item (click)="saveEditorValue(monaco)">Get Editor Content</button>
+                                <button md-menu-item (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
+                                <button md-menu-item (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
+                                <button md-menu-item (click)="registerCustomLanguage(monaco)">Use custom Language</button>
+                                <md-divider></md-divider>
+                                <button md-menu-item> Settings </button>
+                            </md-menu>
                         </div>
-                        <td-monaco-editor #monaco style="width:100%;height:98%;" theme="vs-dark" flex class="md-content" editorStyle="border:0;" editorLanguage="javascript"></td-monaco-editor>
+                        <td-monaco-editor #monaco theme="vs-dark" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-monaco-editor>
                     </div>
                 </div>
-                <div class="td-layout-footer pad-xs">
+                <div class="td-layout-footer bgc-black pad-xs">
                     <div layout="row" layout-align="start center">
                         <span class="push-left">
                             <md-icon class="text-md">description</md-icon>

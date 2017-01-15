@@ -31,6 +31,9 @@ $theme: md-dark-theme($primary, $accent, $warn);
 @include covalent-highlight-theme();
 
 
+// Theme components
+$background: map-get($theme, background);
+
 // Active icon color in list nav
 md-nav-list {
     [md-list-item].active {
@@ -42,4 +45,9 @@ md-nav-list {
             color: md-color($accent);
         }
     }
+}
+
+// Active button toggle
+.md-button-toggle-checked .md-button-toggle-label-content {
+    background-color: md-color($background, status-bar);
 }
