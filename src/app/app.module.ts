@@ -13,7 +13,6 @@ import { CovalentChartsModule } from '@covalent/charts';
 import { CovalentMonacoEditorModule } from '../platform/monaco-editor';
 import { CovalentFileChooserModule } from '../platform/file-chooser';
 
-
 @NgModule({
   declarations: [
     AppComponent,
