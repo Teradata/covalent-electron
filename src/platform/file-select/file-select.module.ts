@@ -7,7 +7,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 
 import { TdContainerDirective } from '../../components/';
-import { TdFileChooserComponent } from './file-chooser.component';
+import { TdFileSelectComponent } from './file-select.component';
 
 @NgModule({
   imports: [
@@ -18,17 +18,17 @@ import { TdFileChooserComponent } from './file-chooser.component';
     MaterialModule.forRoot(),
   ],
   declarations: [
-    TdFileChooserComponent,
+    TdFileSelectComponent,
     TdContainerDirective,
   ],
   exports: [
-    TdFileChooserComponent,
+    TdFileSelectComponent,
   ],
 })
-export class CovalentFileChooserModule {
+export class CovalentFileSelectModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CovalentFileChooserModule,
+      ngModule: CovalentFileSelectModule,
       providers: [ ],
     };
   }

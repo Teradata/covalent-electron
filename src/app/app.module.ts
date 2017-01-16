@@ -11,7 +11,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentChartsModule } from '@covalent/charts';
 import { CovalentMonacoEditorModule } from '../platform/monaco-editor';
-import { CovalentFileChooserModule } from '../platform/file-chooser';
+import { CovalentFileSelectModule } from '../platform/file-select';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { CovalentFileChooserModule } from '../platform/file-chooser';
     CovalentChartsModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
     CovalentMonacoEditorModule.forRoot(),
-    CovalentFileChooserModule.forRoot(),
+    CovalentFileSelectModule.forRoot(),
     appRoutes,
   ], // modules needed to run this module
   providers: [

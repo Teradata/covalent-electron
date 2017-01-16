@@ -1,13 +1,13 @@
 {
-  "name": "@covalent/file-chooser",
+  "name": "@covalent/file-select",
   "version": "0.0.1",
-  "description": "Teradata UI Platform File Chooser",
+  "description": "Teradata UI Platform File Select",
   "keywords": [
     "angular",
     "components",
     "reusable",
     "file",
-    "chooser",
+    "select",
     "browse"
   ],
   "scripts": {

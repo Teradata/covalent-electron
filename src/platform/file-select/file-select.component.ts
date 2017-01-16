@@ -8,11 +8,11 @@ export interface IFile {
 }
 
 @Component({
-  selector: 'td-file-chooser',
-  templateUrl: './file-chooser.component.html',
-  styleUrls: [ './file-chooser.component.scss' ],
+  selector: 'td-file-select',
+  templateUrl: './file-select.component.html',
+  styleUrls: [ './file-select.component.scss' ],
 })
-export class TdFileChooserComponent implements AfterViewInit {
+export class TdFileSelectComponent implements AfterViewInit {
 
     files: IFile[] = [];
     prevPath: string = '';
