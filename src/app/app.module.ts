@@ -11,14 +11,12 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentChartsModule } from '@covalent/charts';
 import { CovalentMonacoEditorModule } from '../platform/monaco-editor';
-import { FileExpansionPanelComponent, TdContainerDirective } from '../components/';
+import { CovalentFileSelectModule } from '../platform/file-select';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FileExpansionPanelComponent,
-    TdContainerDirective,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,
@@ -29,13 +27,11 @@ import { FileExpansionPanelComponent, TdContainerDirective } from '../components
     CovalentChartsModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
     CovalentMonacoEditorModule.forRoot(),
+    CovalentFileSelectModule.forRoot(),
     appRoutes,
   ], // modules needed to run this module
   providers: [
     appRoutingProviders,
-  ], // additional providers needed for this module
-  entryComponents: [
-    FileExpansionPanelComponent,
   ],
   bootstrap: [ AppComponent ],
 })
