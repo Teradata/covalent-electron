@@ -1,13 +1,13 @@
 {
-  "name": "@covalent/monaco-editor",
+  "name": "@covalent/file-select",
   "version": "0.0.1",
-  "description": "Teradata UI Platform Monaco Editor Module",
+  "description": "Teradata UI Platform File Select",
   "keywords": [
     "angular",
     "components",
     "reusable",
-    "monaco",
-    "editor",
+    "file",
+    "select",
     "browse"
   ],
   "scripts": {
