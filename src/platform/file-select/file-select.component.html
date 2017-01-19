@@ -1,7 +1,12 @@
 <md-nav-list dense>
     <h3 md-subheader>Browse Files</h3>
+    <div layout="row" layout-align="space-around center">
+      <button md-button [disabled]="!canShowPrevious()" (click)="previousPage()"><md-icon>keyboard_arrow_left</md-icon>Back</button>
+      <button md-button [disabled]="!canShowNext()"(click)="nextPage()">Forward<md-icon>keyboard_arrow_right</md-icon></button>
+    </div>
+    <md-divider></md-divider>
     <template let-file let-last="last" ngFor [ngForOf]="files">
-        <a md-list-item class="directory text-truncate" (click)="loadFiles(file.name)">
+        <a md-list-item class="directory text-truncate" (click)="loadFiles(file.name, true)">
             <md-icon md-list-icon>{{file.icon}}</md-icon> {{file.name}}
         </a>
         <md-divider *ngIf="!last"></md-divider>

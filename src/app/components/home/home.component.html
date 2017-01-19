@@ -28,7 +28,7 @@
                                 </md-button-toggle-group>
                             </div>
                             <div flex layout="column" class="md-content">
-                                <td-file-select (openFile)="monaco.value = $event"></td-file-select>
+                                <td-file-select #fileSelect (openFile)="monaco.value = $event.contents"></td-file-select>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div layout="row" layout-align="start center">
                         <span class="push-left">
                             <md-icon class="text-md">description</md-icon>
-                            <span>local/my queries/filename.sql</span>
+                            <span>{{fileSelect.currentOpenedFile ? fileSelect.currentOpenedFile.path + fileSelect.currentOpenedFile.name : 'no selected file'}}</span>
                         </span>
                         <span flex></span>
                         <span class="push-left">
