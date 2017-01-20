@@ -1,10 +1,8 @@
-<md-nav-list dense>
-    <h3 md-subheader>Browse Files</h3>
-    <div layout="row" layout-align="space-around center">
-      <button md-button [disabled]="!canShowPrevious()" (click)="previousPage()"><md-icon>keyboard_arrow_left</md-icon>Back</button>
-      <button md-button [disabled]="!canShowNext()"(click)="nextPage()">Forward<md-icon>keyboard_arrow_right</md-icon></button>
-    </div>
-    <md-divider></md-divider>
+<div layout="row" layout-align="start center" class="bgc-grey-900">
+    <button md-icon-button [disabled]="!canShowPrevious()" (click)="previousPage()"><md-icon>arrow_back</md-icon></button><span class="md-title">Browse Files</span>
+</div>
+<md-divider></md-divider>
+<md-nav-list dense flex>
     <template let-file let-last="last" ngFor [ngForOf]="files">
         <a md-list-item class="directory text-truncate" (click)="loadFiles(file.name, true)">
             <md-icon md-list-icon>{{file.icon}}</md-icon> {{file.name}}
@@ -12,3 +10,10 @@
         <md-divider *ngIf="!last"></md-divider>
     </template>
 </md-nav-list>
+<md-divider></md-divider>
+<td-layout-footer-inner>
+    <div layout="row" layout-align="start center">
+        <button md-icon-button [disabled]="!canShowPrevious()" (click)="previousPage()"><md-icon>keyboard_arrow_left</md-icon></button>
+        <button md-icon-button [disabled]="!canShowNext()"(click)="nextPage()"><md-icon>keyboard_arrow_right</md-icon></button>
+    </div>
+</td-layout-footer-inner>
