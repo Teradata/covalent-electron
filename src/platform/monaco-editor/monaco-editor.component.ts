@@ -107,7 +107,7 @@ export class TdMonacoEditorComponent implements OnInit {
             <link rel="stylesheet" data-name="vs/editor/editor.main" 
                 href="file:///node_modules/monaco-editor/min/vs/editor/editor.main.css">
         </head>
-        <body style="height:100%">
+        <body style="height:100%;width: 100%;margin: 0;padding: 0;overflow: hidden;">
         <div id="container" style="width:100%;height:100%;${this._editorStyle}"></div>
         <script>
             // Get the ipcRenderer of electron for communication
@@ -192,6 +192,12 @@ export class TdMonacoEditorComponent implements OnInit {
                 css.type = "text/css";
                 css.innerHTML = data.monarchTokensProviderCSS;
                 document.body.appendChild(css);
+            });
+
+            // need to manually resize the editor any time the window size
+            // changes. See: https://github.com/Microsoft/monaco-editor/issues/28
+            window.addEventListener("resize", function resizeEditor() {
+                editor.layout();
             });
         </script>
         </body>
