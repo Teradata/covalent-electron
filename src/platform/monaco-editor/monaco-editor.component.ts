@@ -182,6 +182,10 @@ export class TdMonacoEditorComponent implements OnInit {
                     }
                 });
 
+                // Define a new theme that constains only rules that match this language
+                monaco.editor.defineTheme(data.customTheme.id, data.customTheme.theme);
+                theme = data.customTheme.id;
+
                 monaco.languages.registerCompletionItemProvider(data.id, {
                     provideCompletionItems: () => {
                         return data.completionItemProvider

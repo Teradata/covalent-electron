@@ -34,6 +34,19 @@ export class HomeComponent implements AfterViewInit {
           ['/\\[info.*/', 'custom-info'],
           ['/\\[[a-zA-Z 0-9:]+\\]/', 'custom-date'],
       ],
+      customTheme: {
+        id: 'myCustomTheme',
+        theme: {
+          base: 'vs-dark',
+          inherit: true,
+          rules: [
+            { token: 'custom-info', foreground: '808080' },
+            { token: 'custom-error', foreground: 'ff0000', fontStyle: 'bold' },
+            { token: 'custom-notice', foreground: 'FFA500' },
+            { token: 'custom-date', foreground: '008800' },
+          ],
+        },
+      },
       monarchTokensProviderCSS: `
         .monaco-editor .token.custom-info {
           color: grey;
@@ -75,6 +88,7 @@ export class HomeComponent implements AfterViewInit {
       ],
     };
     monacoEditor.registerLanguage(language);
+    monacoEditor.theme = 'myCustomTheme';
     monacoEditor.language = 'mySpecialLanguage';
   }
 }
