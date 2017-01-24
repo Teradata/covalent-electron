@@ -28,14 +28,9 @@
                                 </md-button-toggle-group>
                             </div>
                             <div flex layout="column" class="md-content">
-                                <td-file-select #fileSelect (openFile)="monaco.value = $event.contents"></td-file-select>
+                                <td-file-select layout="column" flex #fileSelect (openFile)="monaco.value = $event.contents"></td-file-select>
                             </div>
                         </div>
-                    </div>
-                    <div class="td-layout-footer bgc-black pad-xs" layout="row">
-                        <button md-icon-button><md-icon>add</md-icon></button>
-                        <span flex></span>
-                        <button md-icon-button><md-icon>refresh</md-icon></button>
                     </div>
                 </div>
             </md-sidenav>
