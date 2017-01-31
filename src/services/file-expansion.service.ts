@@ -42,11 +42,11 @@ export class FileExpansionService {
     // Hold on to this file so we can bring it back when they view the next one
     this._previousShownFile = file;
 
-    // Let the magic happen here.  Creates the fileExpansion from the fileExpansionResolver and places 
+    // Let the magic happen here.  Creates the fileExpansion from the fileExpansionResolver and places
     // it into a ViewContainerRef
     this._fileExpansionComponentRef = viewContainerRef
       .createComponent<FileExpansionPanelComponent>(this._fileExpansionResolver);
-    // Subscribe to the collapsed event so when collapsed 
+    // Subscribe to the collapsed event so when collapsed
     // the row will turn back to a list item instead of expansion panel
     this._fileExpansionComponentRef.instance.collapsed.subscribe(() => {
       this.remove();

@@ -63,7 +63,7 @@ export class TdFileSelectComponent implements AfterViewInit {
       if (clearFuture) {
         this.pathFuture = [];
       }
-    // If it is a file then create a dynamic expansion panel and 
+    // If it is a file then create a dynamic expansion panel and
     // load in the size and modified date and file contents
     } else {
       let fileContents: string = fs.readFileSync(newPath, 'utf8');
