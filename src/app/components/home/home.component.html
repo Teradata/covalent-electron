@@ -7,7 +7,7 @@
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
                             <span flex></span>
                             <button md-icon-button><md-icon>sort</md-icon></button>
-                            <button md-icon-button><md-icon>settings</md-icon></button>
+                            <button md-icon-button (click)="toggleSettings()" mdTooltip="Toggle Settings" mdTooltipPosition="before"><md-icon>settings</md-icon></button>
                             <button md-icon-button><md-icon>more_vert</md-icon></button>
                         </div>
                         <div flex layout="row">
@@ -28,7 +28,25 @@
                                 </md-button-toggle-group>
                             </div>
                             <div flex layout="column" class="md-content">
-                                <td-file-select layout="column" flex #fileSelect (openFile)="monaco.value = $event.contents"></td-file-select>
+                                <td-file-select [@tdCollapse]="!showFileSelect" layout="column" flex #fileSelect (openFile)="monaco.value = $event.contents"></td-file-select>
+                                <form [@tdCollapse]="!showSettings" #appInfoForm="ngForm" novalidate>
+                                    <div layout="row" layout-align="start center" class="bgc-black">
+                                        <md-icon>settings_input_component</md-icon>
+                                        <span class="md-subhead">&nbsp;Connection Info</span>
+                                    </div>
+                                    <md-divider></md-divider>
+                                    <div layout="row" layout-wrap layout-margin>
+                                        <md-input flex="100" placeholder="URL" [(ngModel)]="url" name="url" tdAutoTrim required>
+                                        </md-input>
+                                        <md-input flex="100" placeholder="Driver Name" [(ngModel)]="driverName" name="driverName" tdAutoTrim required>
+                                        </md-input>
+                                        <md-input flex="100" placeholder="UserName" [(ngModel)]="username" name="username" tdAutoTrim required>
+                                        </md-input>
+                                        <md-input flex="100" placeholder="Password" [(ngModel)]="password" name="password" tdAutoTrim required>
+                                        </md-input>
+                                        <button md-raised-button color="primary" (click)="toggleSettings()">Save</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -44,7 +62,20 @@
                             <button md-icon-button><md-icon>more_vert</md-icon></button>
                         </div>
                         <div layout="column" layout-margin class="md-content">
-                            No Preview Available
+                            <template md-tab-label>Bar Chart</template>
+                            <ngx-charts-bar-vertical
+                                [view]="view"
+                                [scheme]="colorScheme"
+                                [results]="barGraphData"
+                                [gradient]="gradient"
+                                [xAxis]="showXAxis"
+                                [yAxis]="showYAxis"
+                                [legend]="showLegend"
+                                [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel"
+                                [xAxisLabel]="xAxisLabel"
+                                [yAxisLabel]="yAxisLabel">
+                            </ngx-charts-bar-vertical>
                         </div>
                     </div>
                     <div class="td-layout-footer bgc-black pad-xs" layout="row">
@@ -66,6 +97,7 @@
                                 <button md-menu-item (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
                                 <button md-menu-item (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
                                 <button md-menu-item (click)="registerCustomLanguage(monaco)">Use custom Language</button>
+                                <button md-menu-item (click)="executeSQL(monaco)">Execute SQL</button>
                                 <md-divider></md-divider>
                                 <button md-menu-item> Settings </button>
                             </md-menu>

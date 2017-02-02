@@ -11,3 +11,4 @@ declare var require: NodeRequire;
 declare var fs: any;
 declare var electron: any;
 declare var path: any;
+declare var child_process: any;

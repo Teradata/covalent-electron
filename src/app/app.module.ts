@@ -12,6 +12,7 @@ import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentChartsModule } from '@covalent/charts';
 import { CovalentMonacoEditorModule } from '../platform/monaco-editor';
 import { CovalentFileSelectModule } from '../platform/file-select';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CovalentFileSelectModule } from '../platform/file-select';
     CovalentMonacoEditorModule.forRoot(),
     CovalentFileSelectModule.forRoot(),
     appRoutes,
+    NgxChartsModule,
   ], // modules needed to run this module
   providers: [
     appRoutingProviders,
