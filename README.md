@@ -33,39 +33,40 @@ After running the commands below simply save a file in the code base and it will
 Alternatively if you want to also open the Dev Tools while running live-reload run this command instead
 * Create Electron package and run live-reload `npm run live-reload -- --openDevTools`
 
+---
 
 ## Using Node Modules
-To use node_modules in Covalent Electron there are a few steps you need to take.  Covalent is built off of Angular 2 and uses typescript as its coding language.  To allow Node Modules to be used in this framework you will need to follow the steps below.
+To use Node Modules in Covalent Electron there are a few steps you need to take.  Covalent is built off of Angular 2 and uses typescript as its coding language.  To allow Node Modules to be used in this framework with Electron you will need to follow the steps below.
 
 ### Internal Node.js/Electron Node Modules
 
-Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use, for example, if you had a node_module called "some_node_module", then add:
+* Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use, for example, if you had a node_module called "some_node_module", then add:
 `var some_node_module = require('some_node_module');`
 
-Declare this variable in (src/typings.d.ts)[https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module variable. For example:
+* Declare this variable in (typings.d.ts)[https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module. For example:
 `declare var some_node_module: any;`
 
-Then in your typescript file for your component you should be able to use the node_module directly, for example:
+* Then in your typescript file for your component you should be able to use the node_module directly, for example:
 `some_node_module.xyz();`
 
-After those 4 steps you should be able to use an external node_module.
+After these 3 steps you should be able to use an internal node_module.
 
 
 ### External Node.js/Electron Node Modules
 
-Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use, for example, if you had a node_module called "some_node_module", then add:
-`var some_node_module = require('some_node_module');`
-
-Include the module in the [electron/package.json](https://github.com/Teradata/covalent-electron/blob/develop/electron/package.json) dependencies. To note: this is different than the package.json at the top of the source tree. The package.json in electron/package.json is for node_modules you want to actually be included in the electron app. The ones listed in the package.json at the top of the source tree will not be included in the electron app. So you would add:
+* Include the module in the [electron/package.json](https://github.com/Teradata/covalent-electron/blob/develop/electron/package.json) dependencies. To note: this is different than the package.json at the top of the source tree. The package.json in electron/package.json is for node_modules you want to actually be included in the electron app. The ones listed in the package.json at the top of the source tree will not be included in the electron app. So you would add:
 `"dependencies": { "some_node_module": "^0.0.1" },`
 
-Declare this variable in (src/typings.d.ts)[https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module variable. For example:
+* Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use, for example, if you had a node_module called "some_node_module", then add:
+`var some_node_module = require('some_node_module');`
+
+* Declare this variable in (typings.d.ts)[https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module. For example:
 `declare var some_node_module: any;`
 
-Then in your typescript file for your component you should be able to use the node_module directly, for example:
+* Then in your typescript file for your component you should be able to use the node_module directly, for example:
 `some_node_module.xyz();`
 
-After those 4 steps you should be able to use an external node_module.
+After these 4 steps you should be able to use an external node_module.
 
 ---
 
