@@ -43,7 +43,7 @@ To use Node Modules in Covalent Electron there are a few steps you need to take.
 * Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use, for example, if you had a node_module called "some_node_module", then add:
 `var some_node_module = require('some_node_module');`
 
-* Declare this variable in (typings.d.ts)[https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module. For example:
+* Declare this variable in [src/typings.d.ts][https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module. For example:
 `declare var some_node_module: any;`
 
 * Then in your typescript file for your component you should be able to use the node_module directly, for example:
@@ -60,7 +60,7 @@ After these 3 steps you should be able to use an internal node_module.
 * Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use, for example, if you had a node_module called "some_node_module", then add:
 `var some_node_module = require('some_node_module');`
 
-* Declare this variable in (typings.d.ts)[https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module. For example:
+* Declare this variable in [src/typings.d.ts][https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts]. This will allow typescript to not complain about the use of the node_module. For example:
 `declare var some_node_module: any;`
 
 * Then in your typescript file for your component you should be able to use the node_module directly, for example:
