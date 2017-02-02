@@ -23,14 +23,14 @@ export class HomeComponent implements AfterViewInit {
   barGraphData: any[] = [];
   showXAxis: boolean = true;
   showYAxis: boolean = true;
-  gradient: boolean = false;
+  gradient: boolean = true;
   showLegend: boolean = false;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Years with Bank';
   showYAxisLabel: boolean = true;
   yAxisLabel: string = 'Amount of Users';
   colorScheme: any = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
+    domain: ['#1976D2', '#039BE5', '#00BCD4', '#FB8C00', '#FFA726'],
   };
   // form fields
   url: string = '';
