@@ -30,9 +30,43 @@ $theme: md-dark-theme($primary, $accent, $warn);
 @include covalent-charts-theme($theme);
 @include covalent-highlight-theme();
 
+// Custom theme for forms
+.theme-form {
+    $primary2: md-palette($md-grey, 600);
+    $accent2:  md-palette($md-orange, 800);
+    $warn2:    md-palette($md-red, 600);
 
-// Theme components
+    $theme-form: md-light-theme($primary2, $accent2, $warn2);
+
+    @include angular-material-theme($theme-form);
+    @include covalent-theme($theme-form);
+    @include covalent-markdown-theme($theme);
+    @include covalent-charts-theme($theme);
+    @include covalent-highlight-theme();
+}
+
+/* ------------------------------------------------------------------------------- */
+$foreground: map-get($theme, foreground);
 $background: map-get($theme, background);
+
+// Apply theme for this app
+
+// NGX Charts
+[ngx-charts-axis-label] text {
+    fill: md-color($foreground, secondary-text);
+}
+.tick text {
+    fill: md-color($foreground, disabled);
+}
+.gridline-path {
+    &.gridline-path-horizontal,
+    &.gridline-path-vertical {
+        stroke: rgba(black, 0.06);
+    }
+}
+.legend-title-text {
+    color: md-color($foreground, secondary-text);
+}
 
 // Active icon color in list nav
 md-nav-list {
