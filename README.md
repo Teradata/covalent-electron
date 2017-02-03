@@ -44,6 +44,18 @@ To use Node Modules in Covalent Electron there are a few steps you need to take.
 
 `var some_node_module = require('some_node_module');`
 
+ Make sure to require this after the section:
+```
+/*
+ * Require external node modules here
+ */
+```
+This is because the line above:
+
+`module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));`
+
+is what makes the node_modules available to electron
+
 * Declare this variable in [src/typings.d.ts](https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts). This will allow typescript to not complain about the use of the node_module. For example:
 
 `declare var some_node_module: any;`
@@ -64,6 +76,18 @@ After these 3 steps you should be able to use an internal node_module.
 * Add to [electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) the requires for the node_module you want to use.  For example:
 
 `var some_node_module = require('some_node_module');`
+
+ Make sure to require this after the section:
+```
+/*
+ * Require external node modules here
+ */
+```
+This is because the line above:
+
+`module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));`
+
+is what makes the node_modules available to electron
 
 * Declare this variable in [src/typings.d.ts](https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts). This will allow typescript to not complain about the use of the node_module. For example:
 
