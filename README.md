@@ -40,30 +40,30 @@ To utilize "internal" (eg. fs, path, etc.) or "3rd party" (eg. winston, uuid, et
 
 1. Add the require for the module in [src/electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) in the below location
 
-```
-/*
- * Require external node modules here
- */
- var some_node_module = require('some_node_module');
-```
-Make sure it is below the line:
+    ```
+    /*
+    * Require external node modules here
+    */
+    var some_node_module = require('some_node_module');
+    ```
+    Make sure it is below the line:
 
-`module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));`
+    `module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));`
 
-This line is where the node_modules directory becomes available to electron
+    This line is where the node_modules directory becomes available to electron
 
 2. Declare a corresponding variable in [src/typings.d.ts](https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts) to ensure the compiler does not complain about references to the module in Typescript.
 
-`declare var some_node_module: any;`
+    `declare var some_node_module: any;`
 
 3. If the node module is a "3rd party" module, include the module as a dependency in the [electron/package.json](https://github.com/Teradata/covalent-electron/blob/develop/electron/package.json). This is a separate package.json, differentiated from the top level package.json, that defines modules you want to be accessible in the electron app.
 
-`"dependencies": { "some_node_module": "^0.0.1" },`
+    `"dependencies": { "some_node_module": "^0.0.1" },`
 
 
 4. In your Typescript, you can now reference the module as follows.
 
-`some_node_module.xyz();`
+    `some_node_module.xyz();`
 
 ---
 
