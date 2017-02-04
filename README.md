@@ -8,6 +8,9 @@
 <img alt="Covalent" src="https://cdn.rawgit.com/Teradata/covalent-electron/develop/src/app/assets/icons/covalent-and-electron.svg" width="503">
 
 Covalent is a reusable UI platform from Teradata for building web applications with common standards and tooling. It is based on Angular 2 and Material Design.
+
+Covalent Github Repo: https://github.com/Teradata/covalent
+
 Covalent-Electron is the Electron Platform to build desktop apps using Covalent and Electron
 ## Setup
 
@@ -29,6 +32,38 @@ After running the commands below simply save a file in the code base and it will
 
 Alternatively if you want to also open the Dev Tools while running live-reload run this command instead
 * Create Electron package and run live-reload `npm run live-reload -- --openDevTools`
+
+---
+
+## Including Node Modules in Covalent Electron
+To utilize "internal" (eg. fs, path, etc.) or "3rd party" (eg. winston, uuid, etc.) node modules from within your Covalent Electron application, you must perform the following steps to ensure the node modules are accessible. Assume for this example you want to utilize a node module named "some_node_module".
+
+1. Add the require for the module in [src/electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) in the below location
+
+```
+/*
+ * Require external node modules here
+ */
+ var some_node_module = require('some_node_module');
+```
+Make sure it is below the line:
+
+`module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));`
+
+This line is where the node_modules directory becomes available to electron
+
+2. Declare a corresponding variable in [src/typings.d.ts](https://github.com/Teradata/covalent-electron/blob/develop/src/typings.d.ts) to ensure the compiler does not complain about references to the module in Typescript.
+
+`declare var some_node_module: any;`
+
+3. If the node module is a "3rd party" module, include the module as a dependency in the [electron/package.json](https://github.com/Teradata/covalent-electron/blob/develop/electron/package.json). This is a separate package.json, differentiated from the top level package.json, that defines modules you want to be accessible in the electron app.
+
+`"dependencies": { "some_node_module": "^0.0.1" },`
+
+
+4. In your Typescript, you can now reference the module as follows.
+
+`some_node_module.xyz();`
 
 ---
 
