@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+
+var uniqueCounter = 0;
 
 @Component({
   selector: 'td-monaco-editor',
@@ -16,6 +18,10 @@ export class TdMonacoEditorComponent implements OnInit {
   private _theme: string = 'vs';
   private _language: string = 'javascript';
   private _subject: Subject<string> = new Subject();
+
+  private _monacoInnerContainer = 'monacoInnerContainer' + uniqueCounter++;
+
+  @ViewChild('monacoContainer') _monacoContainer: ElementRef;
 
  /**
   * editorValueChange: function($event)
@@ -108,7 +114,7 @@ export class TdMonacoEditorComponent implements OnInit {
                 href="file:///node_modules/monaco-editor/min/vs/editor/editor.main.css">
         </head>
         <body style="height:100%;width: 100%;margin: 0;padding: 0;overflow: hidden;">
-        <div id="container" style="width:100%;height:100%;${this._editorStyle}"></div>
+        <div id="${this._monacoInnerContainer}" style="width:100%;height:100%;${this._editorStyle}"></div>
         <script>
             // Get the ipcRenderer of electron for communication
             const {ipcRenderer} = require('electron');
@@ -125,7 +131,7 @@ export class TdMonacoEditorComponent implements OnInit {
             self.process.browser = true;
 
             require(['vs/editor/editor.main'], function() {
-                editor = monaco.editor.create(document.getElementById('container'), {
+                editor = monaco.editor.create(document.getElementById('${this._monacoInnerContainer}'), {
                     value: '${this._value}',
                     language: '${this.language}',
                     theme: '${this._theme}',
@@ -154,7 +160,7 @@ export class TdMonacoEditorComponent implements OnInit {
             ipcRenderer.on('setLanguage', function(event, data){
                 var currentValue = editor.getValue();
                 editor.dispose();
-                editor = monaco.editor.create(document.getElementById('container'), {
+                editor = monaco.editor.create(document.getElementById('${this._monacoInnerContainer}'), {
                     value: currentValue,
                     language: data,
                     theme: theme,
@@ -237,7 +243,6 @@ export class TdMonacoEditorComponent implements OnInit {
     });
 
     // append the webview to the DOM
-    let monacoContainer: HTMLElement = document.getElementById('monacoContainer');
-    monacoContainer.appendChild(this._webview);
+    this._monacoContainer.nativeElement.appendChild(this._webview);
   }
 }
