@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ElementRef }
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-var uniqueCounter = 0;
+let uniqueCounter: number = 0;
 
 @Component({
   selector: 'td-monaco-editor',
@@ -19,7 +19,7 @@ export class TdMonacoEditorComponent implements OnInit {
   private _language: string = 'javascript';
   private _subject: Subject<string> = new Subject();
 
-  private _monacoInnerContainer = 'monacoInnerContainer' + uniqueCounter++;
+  private _monacoInnerContainer: string = 'monacoInnerContainer' + uniqueCounter++;
 
   @ViewChild('monacoContainer') _monacoContainer: ElementRef;
 
