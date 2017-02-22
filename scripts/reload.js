@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var chokidar = require('chokidar');
 var spawn = require('child_process').spawn;
 var runSequence = require('run-sequence');
 var electron = require('electron-connect').server.create();
@@ -90,12 +91,13 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
   cmd.on('close', function (code) {
       cb(code);
   });
-  var fs = require('fs');
-  if (!fs.existsSync('dist-ng')){
-      fs.mkdirSync('dist-ng');
-      fs.openSync('dist-ng/fake', 'a')
-  }
-  gulp.watch(['dist-ng/**/*'], ['changes-detected']);
+  chokidar.watch('dist-ng/**/*', {
+    persistent: true,
+  }).on('addDir', function(event, path) {
+    runSequence('changes-detected');
+  }).on('change', function(event, path) {
+    runSequence('changes-detected');
+  });
 });
 
 // check every 3 seconds if ng build has run
