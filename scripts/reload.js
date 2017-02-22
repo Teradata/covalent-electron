@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var chokidar = require('chokidar');
 var spawn = require('child_process').spawn;
 var runSequence = require('run-sequence');
+var fs = require('fs');
 var electron = require('electron-connect').server.create();
 var rendered = false;
 var changesDetected = false;
@@ -84,7 +85,6 @@ gulp.task('reload-electron', function () {
   electron.broadcast("reloadit", "true");
 });
 
-var fs = require('fs');
 var deleteFolderRecursive = function(path) {
   if( fs.existsSync(path) ) {
     fs.readdirSync(path).forEach(function(file,index){
@@ -104,6 +104,11 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
 
   if (/^win/.test(process.platform)) { // windows
     deleteFolderRecursive('dist-ng');
+
+    if (!fs.existsSync('dist-ng')){
+       fs.mkdirSync('dist-ng');
+       fs.openSync('dist-ng/fake', 'a')
+    }
 
     chokidar.watch('.', {
       persistent: true,
