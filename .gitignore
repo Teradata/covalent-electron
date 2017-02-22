@@ -5,6 +5,7 @@
 /deploy
 /tmp
 /dist-app
+/dist-ng
 
 # dependencies
 /node_modules

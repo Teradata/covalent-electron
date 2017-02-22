@@ -4,6 +4,8 @@ var gulp = require('gulp');
 var spawn = require('child_process').spawn;
 var runSequence = require('run-sequence');
 var electron = require('electron-connect').server.create();
+var rendered = false;
+var changesDetected = false;
 
 function getSpawn(command, args, options) {
   if (!/^win/.test(process.platform)) { // linux
@@ -33,25 +35,32 @@ gulp.task('watch', ['start-watch-src','watch-electron'], function (cb) {
 
 // kicks off all the tasks to run and watch for changes on src files
 gulp.task('start-watch-src', function (cb) {
-  var cmd = getSpawn('ng', ['build']);
-  cmd.on('close', function (code) {
-      runSequence('copy','copy-electron-connect', 'npm-install', 'start-electron','watch-src');
-      cb(code);
-  });
-});
-
-// called when a src file has been changed
-gulp.task('reload', function (cb) {
-  var cmd = getSpawn('ng', ['build']);
-  cmd.on('close', function (code) {
-      runSequence('copy', 'copy-electron-connect', 'npm-install', 'reload-electron');
-      cb(code);
-  });
+    runSequence('copy','copy-electron-connect', 'npm-install','watch-src');
 });
 
 // copy over the electron-connect node_module to the dist dir
 gulp.task('copy-electron-connect', function () {
     gulp.src(['node_modules/electron-connect/**'], {base: 'node_modules/'}).pipe(gulp.dest('dist/node_modules'));
+});
+
+// copy over the dist-ng dir to the dist dir
+gulp.task('copy-dist-ng', function () {
+    gulp.src(['dist-ng/**'], {base: 'dist-ng/'}).pipe(gulp.dest('dist'));
+});
+
+// copy over the dist-ng dir to the dist dir and reload electron
+gulp.task('copy-dist-ng-and-reload', function () {
+    if (rendered) {
+      runSequence('copy-dist-ng', 'reload-electron');
+    } else {
+      runSequence('copy-dist-ng', 'start-electron');
+      rendered = true;
+    }
+});
+
+// copy over the dist-ng dir to the dist dir
+gulp.task('changes-detected', function () {
+    changesDetected = true;
 });
 
 // run npm install inside the dist dir
@@ -77,8 +86,26 @@ gulp.task('reload-electron', function () {
 // watches the src files for changes
 gulp.task('watch-src', 'Watch for changed files', function (cb) {  
   // Reload renderer process after files change
-  gulp.watch(['src/**/*'], ['reload']);
+  var cmd = getSpawn('ng', ['build', '--watch', '--output-path', 'dist-ng']);
+  cmd.on('close', function (code) {
+      cb(code);
+  });
+  var fs = require('fs');
+  if (!fs.existsSync('dist-ng')){
+      fs.mkdirSync('dist-ng');
+      fs.openSync('dist-ng/fake', 'a')
+  }
+  gulp.watch(['dist-ng/**/*'], ['changes-detected']);
 });
+
+// check every 3 seconds if ng build has run
+setInterval(
+  function(){
+    if (changesDetected) {
+      changesDetected = false;
+      runSequence('copy-dist-ng-and-reload');
+    }
+}, 3000);
 
 // called when an electron file has been changed
 gulp.task('restart', function (cb) {
