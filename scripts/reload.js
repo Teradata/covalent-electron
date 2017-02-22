@@ -107,7 +107,6 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
 
     if (!fs.existsSync('dist-ng')){
        fs.mkdirSync('dist-ng');
-       fs.openSync('dist-ng/fake', 'a')
     }
 
     chokidar.watch('.', {
