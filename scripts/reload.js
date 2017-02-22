@@ -84,20 +84,53 @@ gulp.task('reload-electron', function () {
   electron.broadcast("reloadit", "true");
 });
 
+var fs = require('fs');
+var deleteFolderRecursive = function(path) {
+  if( fs.existsSync(path) ) {
+    fs.readdirSync(path).forEach(function(file,index){
+      var curPath = path + "/" + file;
+      if(fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+};
+
 // watches the src files for changes
 gulp.task('watch-src', 'Watch for changed files', function (cb) {  
+
+  if (/^win/.test(process.platform)) { // windows
+    deleteFolderRecursive('dist-ng');
+
+    chokidar.watch('.', {
+      persistent: true,
+      ignorePermissionErrors: true,
+      atomic: 2000,
+    }).on('change', path => {
+      if (path.indexOf('dist-ng') > -1) {
+        runSequence('changes-detected');
+      }
+    });
+  }
+
   // Reload renderer process after files change
   var cmd = getSpawn('ng', ['build', '--watch', '--output-path', 'dist-ng']);
   cmd.on('close', function (code) {
       cb(code);
   });
-  chokidar.watch('dist-ng/**/*', {
-    persistent: true,
-  }).on('addDir', function(event, path) {
-    runSequence('changes-detected');
-  }).on('change', function(event, path) {
-    runSequence('changes-detected');
-  });
+
+  if (!/^win/.test(process.platform)) { // linux
+    chokidar.watch('dist-ng/**/*', {
+      persistent: true,
+    }).on('addDir', function(event, path) {
+      runSequence('changes-detected');
+    }).on('change', function(event, path) {
+      runSequence('changes-detected');
+    });
+  }
 });
 
 // check every 3 seconds if ng build has run
