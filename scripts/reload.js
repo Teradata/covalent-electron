@@ -113,6 +113,10 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
       persistent: true,
       ignorePermissionErrors: true,
       atomic: 2000,
+      awaitWriteFinish: {
+        stabilityThreshold: 2000,
+        pollInterval: 100
+      },
     }).on('all', (event, path) => {
       if ((event === 'add' || event === 'change') && path.indexOf('dist-ng') > -1) {
         runSequence('changes-detected');
