@@ -133,10 +133,10 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
   if (!/^win/.test(process.platform)) { // linux
     chokidar.watch('dist-ng/**/*', {
       persistent: true,
-    }).on('addDir', function(event, path) {
-      runSequence('changes-detected');
-    }).on('change', function(event, path) {
-      runSequence('changes-detected');
+    }).on('all', (event, path) => {
+      if ((event === 'add' || event === 'change') && ((path.indexOf('dist-ng/main.bundle.js') > -1) || (path.indexOf('dist-ng\\main.bundle.js') > -1))) {
+        runSequence('changes-detected');
+      }
     });
   }
 });
