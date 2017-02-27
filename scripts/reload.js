@@ -47,7 +47,7 @@ gulp.task('copy-electron-connect', function () {
 
 // copy over the dist-ng dir to the dist dir
 gulp.task('copy-dist-ng', function () {
-    gulp.src(['dist-ng/**'], {base: 'dist-ng/'}).pipe(gulp.dest('dist'));
+    return gulp.src(['dist-ng/**'], {base: 'dist-ng/'}).pipe(gulp.dest('dist'));
 });
 
 // copy over the dist-ng dir to the dist dir and reload electron
