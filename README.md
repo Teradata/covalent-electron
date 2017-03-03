@@ -35,6 +35,7 @@ Alternatively if you want to also open the Dev Tools while running live-reload r
 
 To run VsCode and attach as the Debugger to Covalent Electron see here:
 * Debugging in VsCode with Live Reload in Covalent Electron:
+
   https://github.com/Teradata/covalent-electron/wiki/Debugging-with-VS-Code-with-Electron
 
 ---
