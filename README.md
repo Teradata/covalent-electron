@@ -33,6 +33,9 @@ After running the commands below simply save a file in the code base and it will
 Alternatively if you want to also open the Dev Tools while running live-reload run this command instead
 * Create Electron package and run live-reload `npm run live-reload -- --openDevTools`
 
+To run VsCode and attach as the Debugger to Covalent Electron see here:
+* Debugging in VsCode with Live Reload in Covalent Electron: https://github.com/Teradata/covalent-electron/wiki/Debugging-with-VS-Code-with-Electron
+
 ---
 
 ## Including Node Modules in Covalent Electron
