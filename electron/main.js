@@ -1,11 +1,12 @@
 const electron = require('electron');
 var client;
-// Connect to live update if LIVE_UPDATE env variable is true
-if (process.env.LIVE_UPDATE === "true") {
-  client = require('electron-connect').client;
-}
 // Module to control application life.
 const app = electron.app;
+// Connect to live update if LIVE_UPDATE env variable is true
+if (process.env.LIVE_UPDATE === "true") {
+  app.commandLine.appendSwitch('remote-debugging-port', '8315');
+  client = require('electron-connect').client;
+}
 const protocol = electron.protocol;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
