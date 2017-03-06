@@ -3,7 +3,8 @@
 module.exports = {
   paths: {
     electronrequiredfiles: [
-      'electron/**'
+      'electron/**',
+      'java/lib/**'
     ]
   }
 };

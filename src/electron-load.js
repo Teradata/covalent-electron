@@ -4,6 +4,7 @@ var fs = require('fs');
 var electron = require('electron');
 var path = require('path');
 var url = require('url');
+var child_process = require('child_process');
 var client;
 // Add all 3rd party node_modules included in the Electron app to be able to be used
 module.paths.push(path.resolve(electron.remote.app.getAppPath() + '/node_modules'));
