@@ -253,9 +253,9 @@ export class TdMonacoEditorComponent implements OnInit {
     // take the html content for the webview and base64 encode it and use as the src tag
     this._webview.setAttribute('src', 'data:text/html;base64,' + window.btoa(monacoHTML));
     this._webview.setAttribute('style', 'display:inline-flex; width:100%; height:100%');
-     this._webview.addEventListener('dom-ready', () => {
-        this._webview.openDevTools();
-     });
+    // this._webview.addEventListener('dom-ready', () => {
+    //    this._webview.openDevTools();
+    // });
 
     // Process the data from the webview
     this._webview.addEventListener('ipc-message', (event: any) => {
