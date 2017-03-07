@@ -14,6 +14,7 @@
     "tslint": "tslint -c ./tslint.json \"./src/**/*.ts\" -e \"./src/**/typings.d.ts\" -e \"./src/environments/**\"",
     "ngbuild": "rm -rf ./dist && ng build",
     "npm-install": "npm --prefix ./dist install ./dist --production",
+    "reinstall": "rm -rf node_modules dist dist-ng dist-app && npm i",
     "build": "gulp copy --option noreload",
     "package": "npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
     "live-reload": "gulp watch",
