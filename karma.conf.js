@@ -14,7 +14,7 @@ module.exports = function (config) {
       require('@angular/cli/plugins/karma')
     ],
     client:{
-      useIframe: false,
+      useIframe: false, // can't run in iframe if using Electron Webview
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     files: [
