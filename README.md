@@ -41,7 +41,7 @@ To run VsCode and attach as the Debugger to Covalent Electron see here:
 ---
 
 ## Including Node Modules in Covalent Electron
-To utilize "internal" (eg. fs, path, etc.) or "3rd party" (eg. winston, uuid, etc.) node modules from within your Covalent Electron application, you must perform the following steps to ensure the node modules are accessible. Assume for this example you want to utilize a node module named "some_node_module".
+To utilize "internal" (eg. fs, path, etc.) or "3rd party" (eg. winston, uuid, monaco-editor, etc.) node modules from within your Covalent Electron application, you must perform the following steps to ensure the node modules are accessible. Assume for this example you want to utilize a node module named "some_node_module".
 
 1. Add the require for the module in [src/electron-load.js](https://github.com/Teradata/covalent-electron/blob/develop/src/electron-load.js) in the below location
 
@@ -69,6 +69,18 @@ To utilize "internal" (eg. fs, path, etc.) or "3rd party" (eg. winston, uuid, et
 4. In your Typescript, you can now reference the module as follows.
 
     `some_node_module.xyz();`
+
+---
+
+## Running Unit Tests in Covalent Electron
+Covalent Electron utilizes Karma and ng test to execute unit tests inside an Electron Test Harness. The tests can be run against a standalone Angular 2 Component, an Angular 2 component that uses "internal" node modules, or an Angular 2 component that uses "3rd party" (eg. winston, uuid, monaco-editor, etc.) node modules
+
+* Simply Run `npm run test`
+
+* Example Test Files:
+
+  * (https://github.com/Teradata/covalent-electron/blob/develop/src/platform/file-select/file-select.component.spec.ts) 
+  * (https://github.com/Teradata/covalent-electron/blob/develop/src/platform/monaco-editor/monaco-editor.component.spec.ts) 
 
 ---
 
