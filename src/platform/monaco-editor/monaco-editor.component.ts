@@ -122,6 +122,11 @@ export class TdMonacoEditorComponent implements OnInit {
     return this._theme;
   }
 
+/**
+ * setMonacoNodeModuleDirOverride function that overrides where to look
+ * for the monaco editor node_module. Used in tests or anywhere that the
+ * node_modules are not in the expected location.
+ */
   setMonacoNodeModuleDirOverride(dirOverride: string): void {
       this._monacoNodeModuleDirOverride = dirOverride;
       this._appPath = dirOverride;
