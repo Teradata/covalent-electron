@@ -141,14 +141,16 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
   }
 });
 
-// check every 3 seconds if ng build has run
-setInterval(
-  function(){
-    if (changesDetected) {
-      changesDetected = false;
-      runSequence('copy-dist-ng-and-reload');
-    }
-}, 3000);
+if (!process.argv.includes('noreload')) {
+  // check every 3 seconds if ng build has run
+  setInterval(
+    function(){
+      if (changesDetected) {
+        changesDetected = false;
+        runSequence('copy-dist-ng-and-reload');
+      }
+  }, 3000);
+}
 
 // called when an electron file has been changed
 gulp.task('restart', function (cb) {

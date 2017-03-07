@@ -18,10 +18,28 @@ export class TdMonacoEditorComponent implements OnInit {
   private _theme: string = 'vs';
   private _language: string = 'javascript';
   private _subject: Subject<string> = new Subject();
-
   private _monacoInnerContainer: string = 'monacoInnerContainer' + uniqueCounter++;
+  private _monacoNodeModuleDirOverride: string = '';
 
   @ViewChild('monacoContainer') _monacoContainer: ElementRef;
+
+ /**
+  * editorInitialized: function($event)
+  * Event emitted when editor is first initialized
+  */
+  @Output('editorInitialized') onEditorInitialized: EventEmitter<void> = new EventEmitter<void>();
+
+ /**
+  * editorConfigurationChanged: function($event)
+  * Event emitted when editor's configuration changes
+  */
+  @Output('editorConfigurationChanged') onEditorConfigurationChanged: EventEmitter<void> = new EventEmitter<void>();
+
+ /**
+  * editorLanguageChanged: function($event)
+  * Event emitted when editor's Language changes
+  */
+  @Output('editorLanguageChanged') onEditorLanguageChanged: EventEmitter<void> = new EventEmitter<void>();
 
  /**
   * editorValueChange: function($event)
@@ -104,6 +122,11 @@ export class TdMonacoEditorComponent implements OnInit {
     return this._theme;
   }
 
+  setMonacoNodeModuleDirOverride(dirOverride: string): void {
+      this._monacoNodeModuleDirOverride = dirOverride;
+      this._appPath = dirOverride;
+  }
+
   ngOnInit(): void {
     let monacoHTML: string = `<!DOCTYPE html>
         <html style="height:100%">
@@ -111,7 +134,7 @@ export class TdMonacoEditorComponent implements OnInit {
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
             <link rel="stylesheet" data-name="vs/editor/editor.main" 
-                href="file:///node_modules/monaco-editor/min/vs/editor/editor.main.css">
+                href="file://${this._monacoNodeModuleDirOverride}/node_modules/monaco-editor/min/vs/editor/editor.main.css">
         </head>
         <body style="height:100%;width: 100%;margin: 0;padding: 0;overflow: hidden;">
         <div id="${this._monacoInnerContainer}" style="width:100%;height:100%;${this._editorStyle}"></div>
@@ -119,7 +142,7 @@ export class TdMonacoEditorComponent implements OnInit {
             // Get the ipcRenderer of electron for communication
             const {ipcRenderer} = require('electron');
         </script>
-        <script src="file:///node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="file://${this._monacoNodeModuleDirOverride}/node_modules/monaco-editor/min/vs/loader.js"></script>
         <script>
             var editor;
             var theme = '${this._theme}';
@@ -139,6 +162,7 @@ export class TdMonacoEditorComponent implements OnInit {
                 editor.getModel().onDidChangeContent( (e)=> {
                     ipcRenderer.sendToHost("onEditorContentChange", editor.getValue());
                 });
+                ipcRenderer.sendToHost("onEditorInitialized", '');
             });
 
             // return back the value in the editor to the mainview
@@ -154,6 +178,7 @@ export class TdMonacoEditorComponent implements OnInit {
             // set the options of the editor from what was sent from the mainview
             ipcRenderer.on('setEditorOptions', function(event, data){
                 editor.updateOptions(data);
+                ipcRenderer.sendToHost("onEditorConfigurationChanged", '');
             });
 
             // set the language of the editor from what was sent from the mainview
@@ -165,6 +190,8 @@ export class TdMonacoEditorComponent implements OnInit {
                     language: data,
                     theme: theme,
                 });
+                ipcRenderer.sendToHost("onEditorConfigurationChanged", '');
+                ipcRenderer.sendToHost("onEditorLanguageChanged", '');
             });
 
             // register a new language with editor
@@ -202,6 +229,8 @@ export class TdMonacoEditorComponent implements OnInit {
                 css.type = "text/css";
                 css.innerHTML = data.monarchTokensProviderCSS;
                 document.body.appendChild(css);
+
+                ipcRenderer.sendToHost("onEditorConfigurationChanged", '');
             });
 
             // need to manually resize the editor any time the window size
@@ -224,9 +253,9 @@ export class TdMonacoEditorComponent implements OnInit {
     // take the html content for the webview and base64 encode it and use as the src tag
     this._webview.setAttribute('src', 'data:text/html;base64,' + window.btoa(monacoHTML));
     this._webview.setAttribute('style', 'display:inline-flex; width:100%; height:100%');
-    // this._webview.addEventListener('dom-ready', () => {
-    //    this._webview.openDevTools();
-    // });
+     this._webview.addEventListener('dom-ready', () => {
+        this._webview.openDevTools();
+     });
 
     // Process the data from the webview
     this._webview.addEventListener('ipc-message', (event: any) => {
@@ -239,6 +268,12 @@ export class TdMonacoEditorComponent implements OnInit {
         } else if (event.channel === 'onEditorContentChange') {
             this._value = event.args[0];
             this.onEditorValueChange.emit(undefined);
+        } else if (event.channel === 'onEditorInitialized') {
+            this.onEditorInitialized.emit(undefined);
+        } else if (event.channel === 'onEditorConfigurationChanged') {
+            this.onEditorConfigurationChanged.emit(undefined);
+        } else if (event.channel === 'onEditorLanguageChanged') {
+            this.onEditorLanguageChanged.emit(undefined);
         }
     });
 
