@@ -14,9 +14,11 @@
     "tslint": "tslint -c ./tslint.json \"./src/**/*.ts\" -e \"./src/**/typings.d.ts\" -e \"./src/environments/**\"",
     "ngbuild": "rm -rf ./dist && ng build",
     "npm-install": "npm --prefix ./dist install ./dist --production",
-    "build": "gulp copy",
+    "reinstall": "rm -rf node_modules dist dist-ng dist-app && npm i",
+    "build": "gulp copy --option noreload",
     "package": "npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
-    "live-reload": "gulp watch"
+    "live-reload": "gulp watch",
+    "test": "npm run build && npm run npm-install && ng test"
   },
   "engines": {
     "node": ">4.4 < 7",
@@ -40,16 +42,16 @@
     "Jeremy Smartt <jeremy.smartt@teradata.com>"
   ],
   "dependencies": {
-    "@angular/common": "2.4.4",
-    "@angular/compiler": "2.4.4",
-    "@angular/core": "2.4.4",
-    "@angular/forms": "2.4.4",
-    "@angular/http": "2.4.4",
+    "@angular/common": "2.4.5",
+    "@angular/compiler": "2.4.5",
+    "@angular/core": "2.4.5",
+    "@angular/forms": "2.4.5",
+    "@angular/http": "2.4.5",
     "@angular/material": "2.0.0-beta.1",
-    "@angular/platform-browser": "2.4.4",
-    "@angular/platform-browser-dynamic": "2.4.4",
-    "@angular/platform-server": "2.4.4",
-    "@angular/router": "3.4.4",
+    "@angular/platform-browser": "2.4.5",
+    "@angular/platform-browser-dynamic": "2.4.5",
+    "@angular/platform-server": "2.4.5",
+    "@angular/router": "3.4.5",
     "@covalent/core": "1.0.0-beta.1",
     "@covalent/charts": "1.0.0-beta.1",
     "@covalent/dynamic-forms": "1.0.0-beta.1",
@@ -58,12 +60,12 @@
     "@covalent/markdown": "1.0.0-beta.1"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "2.4.4",
+    "@angular/compiler-cli": "2.4.5",
     "@types/hammerjs": "^2.0.30",
     "@types/jasmine": "^2.2.31",
     "@types/node": "^6.0.34",
     "@types/selenium-webdriver": "^2.52.0",
-    "angular-cli": "1.0.0-beta.26",
+    "@angular/cli": "1.0.0-beta.32.3",
     "codelyzer": "2.0.0-beta.4",
     "gulp": "3.9.1",
     "gulp-help": "1.6.1",
@@ -77,6 +79,11 @@
     "electron-packager": "^8.5.1",
     "electron-connect": "^0.6.1",
     "run-sequence": "^1.2.2",
-    "chokidar": "^1.6.1"
+    "chokidar": "^1.6.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "1.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-electron": "^5.1.1",
+    "karma-jasmine": "^1.0.2"
   }
 }
