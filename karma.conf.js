@@ -2,7 +2,8 @@
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
 // set the current location so can use external node_modules in tests
-process.env['NODE_MODULE_DIR'] = __dirname + "/dist";
+var path = require('path');
+process.env['NODE_MODULE_DIR'] = __dirname.replace(new RegExp('\\' + path.sep, 'g'), '/') + "/dist";
 
 module.exports = function (config) {
   var configuration = {
