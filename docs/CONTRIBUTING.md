@@ -17,4 +17,3 @@ Make sure you have setup your environment based on the [Developer Guide](DEVELOP
 
 * **Follow the Material Design spec.** All features should be designed to conform with the Material Design spec, and deviations can only be done with team consent.
 * **Limit custom CSS as much as possible.** Ideally, any custom CSS is stored with each individual component and limited to only what is absolutely necessary.
- 
