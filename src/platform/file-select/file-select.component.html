@@ -7,12 +7,12 @@
 <md-divider></md-divider>
 <div flex class="md-content">
     <md-nav-list dense>
-        <template let-file let-last="last" ngFor [ngForOf]="files">
+        <ng-template let-file let-last="last" ngFor [ngForOf]="files">
             <a md-list-item class="directory text-truncate" (click)="loadFiles(file.name, true)">
                 <md-icon md-list-icon>{{file.icon}}</md-icon> {{file.name}}
             </a>
             <md-divider *ngIf="!last"></md-divider>
-        </template>
+        </ng-template>
     </md-nav-list>
 </div>
 <md-divider></md-divider>

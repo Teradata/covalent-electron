@@ -21,8 +21,5 @@
     "noUnusedLocals": false,
     "allowUnreachableCode": false,
     "pretty": true
-  },
-  "exclude": [
-    "**/*.spec.*"
-  ]
+  }
 }

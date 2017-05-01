@@ -1,25 +1,25 @@
-@import '~@angular/material/core/theming/all-theme';
+@import '~@angular/material/theming';
 @import '~@covalent/core/theming/all-theme';
 @import '~@covalent/markdown/markdown-theme';
-@import '~@covalent/charts/charts-theme';
 @import '~@covalent/highlight/highlight-theme';
 // Plus imports for other components in your app.
 
+
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
-@include md-core();
+@include mat-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary: md-palette($md-grey, 900);
-$accent:  md-palette($md-orange, 800, A100, A400);
+$primary: mat-palette($mat-grey, 900);
+$accent:  mat-palette($mat-orange, 800, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$warn:    md-palette($md-red, 600);
+$warn:    mat-palette($mat-red, 600);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: md-dark-theme($primary, $accent, $warn);
+$theme: mat-dark-theme($primary, $accent, $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -27,8 +27,7 @@ $theme: md-dark-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 @include covalent-theme($theme);
 @include covalent-markdown-theme($theme);
-@include covalent-charts-theme($theme);
-@include covalent-highlight-theme();
+@include covalent-highlight-theme(); // OR @import '~highlight.js/styles/vs.css';
 
 
 // Theme components
@@ -38,16 +37,16 @@ $background: map-get($theme, background);
 md-nav-list {
     [md-list-item].active {
         md-icon[md-list-avatar] {
-            background-color: md-color($accent);
-            color: md-color($accent, default-contrast)
+            background-color: mat-color($accent);
+            color: mat-color($accent, default-contrast)
         }
         md-icon[md-list-icon] {
-            color: md-color($accent);
+            color: mat-color($accent);
         }
     }
 }
 
 // Active button toggle
-.md-button-toggle-checked .md-button-toggle-label-content {
-    background-color: md-color($background, status-bar);
+.mat-button-toggle-checked .mat-button-toggle-label-content {
+    background-color: mat-color($background, status-bar);
 }
