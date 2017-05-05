@@ -15,5 +15,19 @@
       <h3>Covalent Electron Loading...</h3>
     </div>
   </app-covalent>
+  <script>
+    // Disable drop events in main app body.
+    // This avoids unexpected navigation.
+    document.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.addEventListener('drop', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    });
+  </script>
 </body>
 </html>

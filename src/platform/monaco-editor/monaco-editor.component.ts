@@ -144,6 +144,10 @@ export class TdMonacoEditorComponent implements OnInit {
         <body style="height:100%;width: 100%;margin: 0;padding: 0;overflow: hidden;">
         <div id="${this._monacoInnerContainer}" style="width:100%;height:100%;${this._editorStyle}"></div>
         <script>
+            // Require fs to support read of files on drag/drop
+            fs = require('fs');
+        </script>
+        <script>
             // Get the ipcRenderer of electron for communication
             const {ipcRenderer} = require('electron');
         </script>
@@ -243,6 +247,37 @@ export class TdMonacoEditorComponent implements OnInit {
             window.addEventListener("resize", function resizeEditor() {
                 editor.layout();
             });
+        </script>
+        <script>
+            // Support drag and drop of file content into the editor
+            var containerdiv = document.getElementById("${this._monacoInnerContainer}");
+
+            containerdiv.ondragover = () => {
+                return false;
+            };
+
+            containerdiv.ondragleave = () => {
+                return false;
+            };
+
+            containerdiv.ondragend = () => {
+                return false;
+            };
+
+            containerdiv.ondrop = (dropEvent) => {
+                dropEvent.preventDefault();
+
+                for (let file of dropEvent.dataTransfer.files) {
+                    var contents = fs.readFileSync(file.path).toString();
+
+                    var line = editor.getPosition();
+                    var range = new monaco.Range(line.lineNumber, line.column, line.lineNumber, line.column);
+                    var id = { major: 1, minor: 1 };             
+                    var op = {identifier: id, range: range, text: contents, forceMoveMarkers: true};
+                    editor.executeEdits("file-drop", [op]);
+                }
+                return false;
+            };
         </script>
         </body>
         </html>`;
