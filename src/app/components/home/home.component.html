@@ -70,7 +70,7 @@
                                 <button md-menu-item> Settings </button>
                             </md-menu>
                         </div>
-                        <td-monaco-editor #monaco theme="vs-dark" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-monaco-editor>
+                        <td-code-editor #monaco theme="vs-dark" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
                     </div>
                 </div>
                 <div class="td-layout-footer bgc-black pad-xs">
@@ -103,7 +103,11 @@
             <span flex></span>
             <span class="push-left tc-blue-600">
                 <md-icon class="text-md">system_update_alt</md-icon>
-                <span>2 Updates</span>
+                <span>
+                    <a target="_blank" [routerLink]="['/foo']">
+                        <md-icon>launch</md-icon>
+                    </a>
+                </span>
             </span>
         </div>
     </div>
