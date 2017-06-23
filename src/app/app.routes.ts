@@ -6,6 +6,10 @@ const routes: Routes = [{
     component: HomeComponent,
     path: '',
   },
+  {
+    component: HomeComponent,
+    path: 'foo',
+  },
 ];
 
 export const appRoutingProviders: any[] = [
