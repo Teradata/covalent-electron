@@ -11,7 +11,7 @@
     "javascript"
   ],
   "scripts": {
-    "tslint": "tslint -c ./tslint.json \"./src/**/*.ts\" -e \"./src/**/typings.d.ts\" -e \"./src/environments/**\"",
+    "lint": "tslint -c ./tslint.json \"./src/**/*.ts\" -e \"./src/**/typings.d.ts\" -e \"./src/environments/**\"",
     "ngbuild": "rm -rf ./dist && ng build",
     "npm-install": "npm --prefix ./dist install ./dist --production",
     "reinstall": "rm -rf node_modules dist dist-ng dist-app && npm i",
