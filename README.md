@@ -13,9 +13,10 @@ Covalent Github Repo: https://github.com/Teradata/covalent
 
 Covalent-Electron is the Electron Platform to build desktop apps using Covalent and Electron
 
-Covalent-Code-Editor is an Angular Component for text and code editing based on Covalent and Monaco Editor.  Covalent-Code-Editor can run in both Electron and Web Browsers.
+Covalent-Code-Editor is an Angular Component for text and code editing based on Covalent and Monaco Editor. The component can run in both Electron and Web Browsers.
 
-Covalent-Code-Editor Github Repo: https://github.com/Teradata/covalent-code-editor
+Covalent-Code-Editor Github Repo: 
+* https://github.com/Teradata/covalent-code-editor
 
 ## Setup
 
