@@ -18,7 +18,7 @@
     "build": "gulp copy --option noreload",
     "package": "npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
     "live-reload": "gulp watch",
-    "test": "npm run build && npm run npm-install && ng test"
+    "test": "npm run build && npm run npm-install && ng test --code-coverage --single-run --sourcemap=false"
   },
   "engines": {
     "node": ">4.4 < 7",
@@ -76,7 +76,7 @@
     "semver": "5.2.0",
     "ts-node": "~2.0.0",
     "tslint": "^4.5.1",
-    "typescript": "2.1.6",
+    "typescript": "2.3.2",
     "electron": "^1.6.6",
     "electron-packager": "^8.6.0",
     "electron-connect": "^0.6.1",
