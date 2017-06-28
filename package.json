@@ -18,7 +18,7 @@
     "build": "gulp copy --option noreload",
     "package": "npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
     "live-reload": "gulp watch",
-    "test": "npm run build && npm run npm-install && ng test"
+    "test": "npm run build && npm run npm-install && ng test --code-coverage --single-run --sourcemap=false"
   },
   "engines": {
     "node": ">4.4 < 7",
