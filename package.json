@@ -58,7 +58,7 @@
     "@covalent/highlight": "1.0.0-beta.3-2",
     "@covalent/http": "1.0.0-beta.3-2",
     "@covalent/markdown": "1.0.0-beta.3-2",
-    "@covalent/code-editor": "^1.0.0-alpha.3",
+    "@covalent/code-editor": "^1.0.0-alpha.6",
     "hammerjs": "^2.0.8"
   },
   "devDependencies": {
