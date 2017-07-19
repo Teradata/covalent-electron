@@ -9,7 +9,11 @@
       "jasmine", "hammerjs", "node"
     ]
   },
+  "files": [
+    "test.ts"
+  ],
   "include": [
-    "**/*.spec.*"
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }
