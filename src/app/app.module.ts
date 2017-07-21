@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { appRoutes, appRoutingProviders } from './app.routes';
 
-import { CovalentCoreModule } from '@covalent/core';
+import { MdButtonModule, MdIconModule, MdButtonToggleModule, MdMenuModule } from '@angular/material';
 import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
@@ -20,13 +20,16 @@ import { CovalentFileSelectModule } from '../platform/file-select';
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,
-    CovalentCoreModule.forRoot(),
-    CovalentHttpModule.forRoot(),
-    CovalentHighlightModule.forRoot(),
-    CovalentMarkdownModule.forRoot(),
-    CovalentMarkdownModule.forRoot(),
-    CovalentCodeEditorModule.forRoot(),
-    CovalentFileSelectModule.forRoot(),
+    MdButtonModule,
+    MdIconModule,
+    MdButtonToggleModule,
+    MdMenuModule,
+    CovalentHttpModule,
+    CovalentHighlightModule,
+    CovalentMarkdownModule,
+    CovalentMarkdownModule,
+    CovalentCodeEditorModule,
+    CovalentFileSelectModule,
     BrowserAnimationsModule,
     appRoutes,
   ], // modules needed to run this module
