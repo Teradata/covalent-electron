@@ -86,6 +86,7 @@
     "jasmine-core": "~2.5.2",
     "karma": "~1.4.1",
     "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.3.0",
     "karma-electron": "^5.1.1",
     "karma-jasmine": "^1.1.0",
     "rimraf": "2.6.1"
