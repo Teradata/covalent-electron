@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, AfterViewInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 export interface IFile {
   path: string;
@@ -28,6 +28,8 @@ export class TdFileSelectComponent implements AfterViewInit {
     */
     @Output('openFile') openFile: EventEmitter<IFile> = new EventEmitter<IFile>();
 
+    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+
     ngAfterViewInit(): void {
         // get the node.js "process" object
         let process: any  = electron.remote.process;
@@ -35,6 +37,8 @@ export class TdFileSelectComponent implements AfterViewInit {
         this.homeDir = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         this.prevPath = this.homeDir;
         this.loadFiles('', true);
+
+        this._changeDetectorRef.detectChanges();
     }
 
   /**

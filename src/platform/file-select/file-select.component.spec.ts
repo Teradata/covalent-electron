@@ -5,9 +5,9 @@ import {
   ComponentFixture,
 } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { CovalentCoreModule } from '@covalent/core';
 import { TdFileSelectComponent } from './file-select.component';
 import { By } from '@angular/platform-browser';
+import { MdButtonModule, MdIconModule, MdButtonToggleModule, MdMenuModule } from '@angular/material';
 
 describe('Component: App', () => {
 
@@ -17,7 +17,10 @@ describe('Component: App', () => {
         TdFileSelectComponent,
       ],
       imports: [
-        CovalentCoreModule.forRoot(),
+        MdButtonModule,
+        MdIconModule,
+        MdButtonToggleModule,
+        MdMenuModule,
       ],
     });
     TestBed.compileComponents();
