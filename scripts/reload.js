@@ -37,7 +37,7 @@ gulp.task('watch', ['start-watch-src','watch-electron'], function (cb) {
 
 // kicks off all the tasks to run and watch for changes on src files
 gulp.task('start-watch-src', function (cb) {
-    runSequence('copy','copy-electron-connect', 'npm-install','watch-src');
+    runSequence('copy','npm-install','copy-electron-connect','watch-src');
 });
 
 // copy over the electron-connect node_module to the dist dir
