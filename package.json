@@ -17,7 +17,7 @@
     "reinstall": "rimraf node_modules dist dist-ng dist-app && npm i",
     "build": "gulp copy --option noreload",
     "package": "npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
-    "live-reload": "gulp watch",
+    "live-reload": "rimraf ./dist && rimraf ./dist-ng && gulp watch",
     "test": "npm run build && npm run npm-install && ng test --code-coverage --single-run --sourcemap=false"
   },
   "engines": {
