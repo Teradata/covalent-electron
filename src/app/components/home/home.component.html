@@ -1,31 +1,31 @@
 <div layout="column" layout-fill>
     <div flex class="content md-content">
-        <md-sidenav-container fullscreen class="td-layout-manage-list md-content" flex layout="row">
-            <md-sidenav opened="true" align="start" mode="side" class="md-sidenav-left md-whiteframe-z1">
+        <mat-sidenav-container fullscreen class="td-layout-manage-list md-content" flex layout="row">
+            <mat-sidenav opened="true" align="start" mode="side" class="mat-sidenav-left md-whiteframe-z1">
                 <div layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
                             <span flex></span>
-                            <button md-icon-button><md-icon>sort</md-icon></button>
-                            <button md-icon-button><md-icon>settings</md-icon></button>
-                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                            <button mat-icon-button><mat-icon>sort</mat-icon></button>
+                            <button mat-icon-button><mat-icon>settings</mat-icon></button>
+                            <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
                         </div>
                         <div flex layout="row">
                             <div flex="none" class="bgc-dark-grey-B15">
-                                <md-button-toggle-group vertical #group="mdButtonToggleGroup">
-                                    <md-button-toggle value="files" mdTooltip="File Browser" mdTooltipPosition="after" checked="true">
-                                        <md-icon class="push-top push-bottom">folder_open</md-icon>
-                                    </md-button-toggle>
-                                    <md-button-toggle value="data" mdTooltip="Data Sources" mdTooltipPosition="after">
-                                        <md-icon class="push-top push-bottom">storage</md-icon>
-                                    </md-button-toggle>
-                                    <md-button-toggle value="right" mdTooltip="Filters" mdTooltipPosition="after">
-                                        <md-icon class="push-top push-bottom">filter_tilt_shift</md-icon>
-                                    </md-button-toggle>
-                                    <md-button-toggle value="justify" mdTooltip="Cloud Connections" mdTooltipPosition="after">
-                                        <md-icon class="push-top push-bottom">filter_drama</md-icon>
-                                    </md-button-toggle>
-                                </md-button-toggle-group>
+                                <mat-button-toggle-group vertical #group="matButtonToggleGroup">
+                                    <mat-button-toggle value="files" matTooltip="File Browser" matTooltipPosition="after" checked="true">
+                                        <mat-icon class="push-top push-bottom">folder_open</mat-icon>
+                                    </mat-button-toggle>
+                                    <mat-button-toggle value="data" matTooltip="Data Sources" matTooltipPosition="after">
+                                        <mat-icon class="push-top push-bottom">storage</mat-icon>
+                                    </mat-button-toggle>
+                                    <mat-button-toggle value="right" matTooltip="Filters" matTooltipPosition="after">
+                                        <mat-icon class="push-top push-bottom">filter_tilt_shift</mat-icon>
+                                    </mat-button-toggle>
+                                    <mat-button-toggle value="justify" matTooltip="Cloud Connections" matTooltipPosition="after">
+                                        <mat-icon class="push-top push-bottom">filter_drama</mat-icon>
+                                    </mat-button-toggle>
+                                </mat-button-toggle-group>
                             </div>
                             <div flex layout="column" class="md-content">
                                 <td-file-select layout="column" flex #fileSelect (openFile)="monaco.value = $event.contents"></td-file-select>
@@ -33,42 +33,42 @@
                         </div>
                     </div>
                 </div>
-            </md-sidenav>
-            <md-sidenav #preview align="end" mode="side" class="md-sidenav-right md-whiteframe-z1">
+            </mat-sidenav>
+            <mat-sidenav #preview align="end" mode="side" class="mat-sidenav-right md-whiteframe-z1">
                 <div layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
-                            <button md-icon-button (click)="preview.close()" mdTooltip="Close Preview" mdTooltipPosition="after"><md-icon>close</md-icon></button>
+                            <button mat-icon-button (click)="preview.close()" matTooltip="Close Preview" matTooltipPosition="after"><mat-icon>close</mat-icon></button>
                             <span class="md-subhead push-left-sm">Preview</span>
                             <span flex></span>
-                            <button md-icon-button><md-icon>more_vert</md-icon></button>
+                            <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
                         </div>
                         <div layout="column" layout-margin class="md-content">
                             No Preview Available
                         </div>
                     </div>
                     <div class="td-layout-footer bgc-black pad-xs" layout="row">
-                        <button md-icon-button><md-icon>file_download</md-icon></button>
+                        <button mat-icon-button><mat-icon>file_download</mat-icon></button>
                         <span flex></span>
-                        <button md-icon-button><md-icon>refresh</md-icon></button>
+                        <button mat-icon-button><mat-icon>refresh</mat-icon></button>
                     </div>
                 </div>
-            </md-sidenav>
+            </mat-sidenav>
             <div layout="column" flex layout-fill>
                 <div flex layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
                             <span flex class="text-center md-caption">Covalent Electron</span>
-                            <button md-icon-button (click)="preview.toggle()" mdTooltip="Toggle Preview" mdTooltipPosition="before"><md-icon>remove_red_eye</md-icon></button>
-                            <button md-icon-button [mdMenuTriggerFor]="moreMenu"><md-icon>more_vert</md-icon></button>
-                            <md-menu #moreMenu="mdMenu" x-position="before">
-                                <button md-menu-item (click)="saveEditorValue(monaco)">Get Editor Content</button>
-                                <button md-menu-item (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
-                                <button md-menu-item (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
-                                <button md-menu-item (click)="registerCustomLanguage(monaco)">Use custom Language</button>
-                                <md-divider></md-divider>
-                                <button md-menu-item> Settings </button>
-                            </md-menu>
+                            <button mat-icon-button (click)="preview.toggle()" matTooltip="Toggle Preview" matTooltipPosition="before"><mat-icon>remove_red_eye</mat-icon></button>
+                            <button mat-icon-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon></button>
+                            <mat-menu #moreMenu="matMenu" x-position="before">
+                                <button mat-menu-item (click)="saveEditorValue(monaco)">Get Editor Content</button>
+                                <button mat-menu-item (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
+                                <button mat-menu-item (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
+                                <button mat-menu-item (click)="registerCustomLanguage(monaco)">Use custom Language</button>
+                                <mat-divider></mat-divider>
+                                <button mat-menu-item> Settings </button>
+                            </mat-menu>
                         </div>
                         <td-code-editor #monaco theme="vs-dark" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
                     </div>
@@ -76,36 +76,36 @@
                 <div class="td-layout-footer bgc-black pad-xs">
                     <div layout="row" class="pad-sm" layout-align="start center">
                         <span class="push-left">
-                            <md-icon class="text-md">description</md-icon>
+                            <mat-icon class="text-md">description</mat-icon>
                             <span>{{fileSelect.currentOpenedFile ? fileSelect.currentOpenedFile.path + fileSelect.currentOpenedFile.name : 'no selected file'}}</span>
                         </span>
                         <span flex></span>
                         <span class="push-left">
-                            <md-icon class="text-md">warning</md-icon>
+                            <mat-icon class="text-md">warning</mat-icon>
                             <span>8</span>
                         </span>
                         <span class="push-left">
-                            <md-icon class="text-md">error</md-icon>
+                            <mat-icon class="text-md">error</mat-icon>
                             <span>2</span>
                         </span>
                     </div>
                 </div>
-                <md-divider></md-divider>
+                <mat-divider></mat-divider>
             </div>
-        </md-sidenav-container>
+        </mat-sidenav-container>
     </div>
     <div class="td-layout-footer pad-sm">
         <div layout="row" layout-align="start center">
             <span class="tc-green-600">
-                <md-icon class="text-md">check</md-icon>
+                <mat-icon class="text-md">check</mat-icon>
                 <span>No Issues</span>
             </span>
             <span flex></span>
             <span class="push-left tc-blue-600">
-                <md-icon class="text-md">system_update_alt</md-icon>
+                <mat-icon class="text-md">system_update_alt</mat-icon>
                 <span>
                     <a target="_blank" [routerLink]="['/foo']">
-                        <md-icon>launch</md-icon>
+                        <mat-icon>launch</mat-icon>
                     </a>
                 </span>
             </span>

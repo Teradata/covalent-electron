@@ -1,11 +1,11 @@
 <td-expansion-panel expand="true" [label]="label" (collapsed)="emitCollapsed()">
-  <md-card-title>{{filePath}}</md-card-title>
-  <md-card-subtitle>Size: {{size}} Modified: {{modifiedDate}}</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
+  <mat-card-title>{{filePath}}</mat-card-title>
+  <mat-card-subtitle>Size: {{size}} Modified: {{modifiedDate}}</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-card-content>
     <p><span class="md-subhead">File Contents:</span></p>
     <td-highlight lang="html">
       {{contents}} 
     </td-highlight>
-  </md-card-content>
+  </mat-card-content>
 </td-expansion-panel>
