@@ -3,13 +3,16 @@
 // :host /deep/ lets you travel down the Shadow DOM tree to change web component styles
 :host /deep/ {
 
-    // md-divider has a bug in angular-material that doesn't apply color
-    md-divider {
+    // mat-divider has a bug in angular-material that doesn't apply color
+    mat-divider {
         border-top-color: rgba(black, 0.12);
     }
     a.directory {
         &:hover {
             cursor: pointer;
         }
+    }
+    mat-toolbar {
+        z-index: 2;
     }
 }

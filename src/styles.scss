@@ -4,12 +4,12 @@
   -webkit-app-region: drag;
 }
 
-// Href line height wasn't right for md-icon-button
-a[md-icon-button] {
+// Href line height wasn't right for mat-icon-button
+a[mat-icon-button] {
     line-height: 36px;
 }
 
 // Stretch tab labels until there is an attribute for it
-.md-tab-label {
+.mat-tab-label {
     flex-grow: 1;
 }
