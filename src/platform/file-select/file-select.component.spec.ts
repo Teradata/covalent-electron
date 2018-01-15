@@ -7,7 +7,7 @@ import {
 import { Component } from '@angular/core';
 import { TdFileSelectComponent } from './file-select.component';
 import { By } from '@angular/platform-browser';
-import { MatButtonModule, MatIconModule, MatButtonToggleModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatButtonToggleModule, MatMenuModule, MatListModule } from '@angular/material';
 
 describe('Component: App', () => {
 
@@ -21,6 +21,7 @@ describe('Component: App', () => {
         MatIconModule,
         MatButtonToggleModule,
         MatMenuModule,
+        MatListModule,
       ],
     });
     TestBed.compileComponents();

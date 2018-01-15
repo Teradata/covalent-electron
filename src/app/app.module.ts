@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { appRoutes, appRoutingProviders } from './app.routes';
 
-import { MatButtonModule, MatIconModule, MatButtonToggleModule, MatMenuModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatButtonToggleModule, MatMenuModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
@@ -24,6 +24,7 @@ import { CovalentFileSelectModule } from '../platform/file-select';
     MatIconModule,
     MatButtonToggleModule,
     MatMenuModule,
+    MatListModule,
     MatSidenavModule,
     CovalentHttpModule,
     CovalentHighlightModule,
