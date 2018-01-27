@@ -7,7 +7,12 @@ import {
 import { Component } from '@angular/core';
 import { TdFileSelectComponent } from './file-select.component';
 import { By } from '@angular/platform-browser';
-import { MatButtonModule, MatIconModule, MatButtonToggleModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 describe('Component: App', () => {
 
@@ -21,6 +26,7 @@ describe('Component: App', () => {
         MatIconModule,
         MatButtonToggleModule,
         MatMenuModule,
+        MatListModule,
       ],
     });
     TestBed.compileComponents();
