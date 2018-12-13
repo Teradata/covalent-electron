@@ -12,9 +12,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
-import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
 import { CovalentFileSelectModule } from '../platform/file-select';
 
@@ -31,10 +29,7 @@ import { CovalentFileSelectModule } from '../platform/file-select';
     MatMenuModule,
     MatListModule,
     MatSidenavModule,
-    CovalentHttpModule,
     CovalentHighlightModule,
-    CovalentMarkdownModule,
-    CovalentMarkdownModule,
     CovalentCodeEditorModule,
     CovalentFileSelectModule,
     BrowserAnimationsModule,
