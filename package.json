@@ -85,6 +85,7 @@
     "karma-coverage-istanbul-reporter": "^0.3.0",
     "karma-electron": "^5.2.2",
     "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "node-sass": "4.11.0",
     "require-dir": "0.3.2",
     "rimraf": "2.6.2",
