@@ -18,7 +18,7 @@
     "build": "gulp copy --option noreload",
     "package": "rimraf ./dist-app && npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
     "live-reload": "rimraf ./dist && rimraf ./dist-ng && gulp watch",
-    "test": "rimraf ./dist && rimraf ./dist-ng && npm run build && npm run npm-install && ng test --code-coverage --single-run --sourcemap=false"
+    "test": "rimraf ./dist && rimraf ./dist-ng && npm run build && npm run npm-install && ng test --codeCoverage=true --watch=false --sourceMap=false"
   },
   "engines": {
     "node": ">=8.9.4",
