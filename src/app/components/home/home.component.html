@@ -70,7 +70,7 @@
                                 <button mat-menu-item> Settings </button>
                             </mat-menu>
                         </div>
-                        <td-code-editor #monaco theme="vs-dark" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
+                        <td-code-editor #monaco theme="vs-dark" [fullScreenKeyBinding]="[68, 69]" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
                     </div>
                 </div>
                 <div class="td-layout-footer bgc-black pad-xs">
