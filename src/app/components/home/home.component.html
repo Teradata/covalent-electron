@@ -1,7 +1,7 @@
 <div layout="column" layout-fill>
     <div flex class="content md-content">
         <mat-sidenav-container fullscreen class="td-layout-manage-list md-content" flex layout="row">
-            <mat-sidenav opened="true" align="start" mode="side" class="mat-sidenav-left md-whiteframe-z1">
+            <mat-sidenav opened="true" position="start" mode="side" class="mat-sidenav-left md-whiteframe-z1">
                 <div layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </mat-sidenav>
-            <mat-sidenav #preview align="end" mode="side" class="mat-sidenav-right md-whiteframe-z1">
+            <mat-sidenav #preview position="end" mode="side" class="mat-sidenav-right md-whiteframe-z1">
                 <div layout="column">
                     <div flex layout="column">
                         <div layout="row" layout-align="start center" class="draggable bgc-grey-900">
@@ -70,7 +70,7 @@
                                 <button mat-menu-item> Settings </button>
                             </mat-menu>
                         </div>
-                        <td-code-editor #monaco theme="vs-dark" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
+                        <td-code-editor #monaco theme="vs-dark" [fullScreenKeyBinding]="[68, 69]" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
                     </div>
                 </div>
                 <div class="td-layout-footer bgc-black pad-xs">

@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 import { CovalentHighlightModule } from '@covalent/highlight';
-import { CovalentMarkdownModule } from '@covalent/markdown';
 
 import { TdContainerDirective } from '../../components/';
 import { TdFileSelectComponent } from './file-select.component';
@@ -15,7 +14,6 @@ import { TdFileSelectComponent } from './file-select.component';
   imports: [
     CommonModule,
     CovalentHighlightModule,
-    CovalentMarkdownModule,
     MatIconModule,
     MatListModule,
     MatButtonModule,
