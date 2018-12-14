@@ -29,7 +29,7 @@ function createWindow () {
     }
   });
 
-  // Create the browser window.ff
+  // Create the browser window
   mainWindow = new BrowserWindow({
     width: 1200, 
     height: 700,
