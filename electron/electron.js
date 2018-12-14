@@ -18,6 +18,8 @@ const url = require('url');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
+
 function createWindow () {
   //Intercept any urls on the page and find the file on disk instead
   protocol.interceptFileProtocol('file', function(req, callback) {
