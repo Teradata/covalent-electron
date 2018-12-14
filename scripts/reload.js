@@ -118,7 +118,7 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
         pollInterval: 100
       },
     }).on('all', (event, path) => {
-      if ((event === 'add' || event === 'change') && ((path.indexOf('dist-ng/main.bundle.js') > -1) || (path.indexOf('dist-ng\\main.bundle.js') > -1))) {
+      if ((event === 'add' || event === 'change') && ((path.indexOf('dist-ng/main.js') > -1) || (path.indexOf('dist-ng\\main.js') > -1))) {
         runSequence('changes-detected');
       }
     });
@@ -134,7 +134,7 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
     chokidar.watch('dist-ng/**/*', {
       persistent: true,
     }).on('all', (event, path) => {
-      if ((event === 'add' || event === 'change') && ((path.indexOf('dist-ng/main.bundle.js') > -1) || (path.indexOf('dist-ng\\main.bundle.js') > -1))) {
+      if ((event === 'add' || event === 'change') && ((path.indexOf('dist-ng/main.js') > -1) || (path.indexOf('dist-ng\\main.js') > -1))) {
         runSequence('changes-detected');
       }
     });

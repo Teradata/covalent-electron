@@ -2,7 +2,7 @@
   "name": "covalent-electron-quick-start",
   "version": "0.0.1",
   "description": "A minimal Covalent Electron application",
-  "main": "main.js",
+  "main": "electron.js",
   "scripts": {
     "start": "electron ."
   },
