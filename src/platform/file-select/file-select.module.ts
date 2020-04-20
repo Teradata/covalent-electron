@@ -27,7 +27,7 @@ import { TdFileSelectComponent } from './file-select.component';
   ],
 })
 export class CovalentFileSelectModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<CovalentFileSelectModule> {
     return {
       ngModule: CovalentFileSelectModule,
       providers: [ ],

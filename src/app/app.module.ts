@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { FileExpansionPanelComponent } from '../components/file-expansion-panel/file-expansion-panel.component';
 import { appRoutes, appRoutingProviders } from './app.routes';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +21,7 @@ import { CovalentFileSelectModule } from '../platform/file-select';
   declarations: [
     AppComponent,
     HomeComponent,
+    FileExpansionPanelComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,

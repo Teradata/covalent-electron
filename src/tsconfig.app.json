@@ -7,11 +7,14 @@
       "hammerjs", "node"
     ]
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.*"
-  ],
   "angularCompilerOptions": { 
     "preserveWhitespaces": false 
-  } 
+  } ,
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }
