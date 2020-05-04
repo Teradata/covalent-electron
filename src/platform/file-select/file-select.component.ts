@@ -1,5 +1,9 @@
 import { Component, AfterViewInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
+import * as electron from 'electron';
+import * as fs from 'fs';
+import * as path from 'path';
+
 export interface IFile {
   path: string;
   name: string;

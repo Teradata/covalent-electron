@@ -16,7 +16,7 @@
     "npm-install": "npm --prefix ./dist install ./dist --production",
     "reinstall": "rimraf node_modules dist dist-ng dist-app && npm i",
     "build": "gulp copy --option noreload",
-    "package": "rimraf ./dist-app && npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/cli.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
+    "package": "rimraf ./dist-app && npm run ngbuild && npm run build && npm run npm-install && node \"./node_modules/electron-packager/bin/electron-packager.js\" dist Covalent --icon=src/app/assets/ico/icon.icns --out=dist-app --overwrite",
     "live-reload": "rimraf ./dist && rimraf ./dist-ng && gulp watch",
     "test": "rimraf ./dist && rimraf ./dist-ng && npm run build && npm run npm-install && ng test --codeCoverage=true --watch=false --sourceMap=false"
   },
@@ -44,12 +44,12 @@
   ],
   "dependencies": {
     "@angular/animations": "^9.1.2",
-    "@angular/cdk": "^8.2.3",
+    "@angular/cdk": "^9.2.1",
     "@angular/common": "^9.1.2",
     "@angular/compiler": "^9.1.2",
     "@angular/core": "^9.1.2",
     "@angular/forms": "^9.1.2",
-    "@angular/material": "^8.2.3",
+    "@angular/material": "^9.2.1",
     "@angular/platform-browser": "^9.1.2",
     "@angular/platform-browser-dynamic": "^9.1.2",
     "@angular/platform-server": "^9.1.2",
@@ -64,6 +64,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "8.4.1",
     "@angular-devkit/build-angular": "~0.901.1",
     "@angular/cli": "^9.1.1",
     "@angular/compiler-cli": "^9.1.2",
@@ -76,7 +77,7 @@
     "electron": "^8.2.3",
     "electron-connect": "^0.6.3",
     "electron-packager": "^14.2.1",
-    "gulp": "4.0.2",
+    "gulp": "3.9.1",
     "gulp-help": "1.6.1",
     "jasmine-core": "~3.5.0",
     "karma": "~5.0.2",
@@ -85,6 +86,7 @@
     "karma-electron": "^6.3.0",
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.5.3",
+    "monaco-editor-webpack-plugin": "1.9.0",
     "node-sass": "4.13.1",
     "require-dir": "1.2.0",
     "rimraf": "3.0.2",
