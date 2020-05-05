@@ -63,14 +63,15 @@
                             <button mat-icon-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon></button>
                             <mat-menu #moreMenu="matMenu" x-position="before">
                                 <button mat-menu-item (click)="saveEditorValue(monaco)">Get Editor Content</button>
-                                <button mat-menu-item (click)="monaco.value = 'console.log()'">Set Content to console.log</button>
-                                <button mat-menu-item (click)="monaco.language = 'sql'">Set Editor language to SQL</button>
+                                <button mat-menu-item (click)="setEditorValue('console.log()')">Set Content to console.log</button>
+                                <button mat-menu-item (click)="setEditorLanguage('sql')">Set Editor language to SQL</button>
+                                <button mat-menu-item (click)="setEditorLanguage('javascript')">Set Editor language to JavaScript</button>
                                 <button mat-menu-item (click)="registerCustomLanguage(monaco)">Use custom Language</button>
                                 <mat-divider></mat-divider>
                                 <button mat-menu-item> Settings </button>
                             </mat-menu>
                         </div>
-                        <td-code-editor #monaco theme="vs-dark" [fullScreenKeyBinding]="[68, 69]" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" editorLanguage="javascript"></td-code-editor>
+                        <td-code-editor #monaco theme="vs-dark" [fullScreenKeyBinding]="[68, 69]" flex class="bgc-grey-900 overflow-hidden" editorStyle="border:0;" [language]="language" [value]="value"></td-code-editor>
                     </div>
                 </div>
                 <div class="td-layout-footer bgc-black pad-xs">

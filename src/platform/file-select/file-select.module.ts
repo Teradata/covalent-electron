@@ -2,6 +2,8 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
@@ -14,6 +16,8 @@ import { TdFileSelectComponent } from './file-select.component';
   imports: [
     CommonModule,
     CovalentHighlightModule,
+    MatCardModule,
+    MatExpansionModule,
     MatIconModule,
     MatListModule,
     MatButtonModule,
@@ -27,7 +31,7 @@ import { TdFileSelectComponent } from './file-select.component';
   ],
 })
 export class CovalentFileSelectModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<CovalentFileSelectModule> {
     return {
       ngModule: CovalentFileSelectModule,
       providers: [ ],

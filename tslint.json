@@ -188,14 +188,14 @@
     "component-selector": [false, "element", "td", "kebab-case"],
     "component-class-suffix": true,
     "directive-class-suffix": false, // Checked in PR's (different suffix for validators and so)
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": true,
-    "no-attribute-parameter-decorator": true,
+    "no-inputs-metadata-property": true,
+    "no-outputs-metadata-property": true,
+    "no-host-metadata-property": true,
+    "no-attribute-decorator": true,
     "no-input-rename": false, // so we can rename @Input so we can change API easier -> @Input('rename') name
     "no-output-rename": false, // same but for @Output
     "no-forward-ref" : false,
-    "use-life-cycle-interface": true,
+    "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "pipe-naming": [
       true,

@@ -36,8 +36,9 @@ function createWindow () {
     width: 1200, 
     height: 700,
     titleBarStyle: 'hidden-inset',
-    "web-preferences": {
-      "web-security": false
+    webPreferences: {
+      preload: path.join(app.getAppPath(), 'electron-load.js'),
+      nodeIntegration: true
     }
   });
 

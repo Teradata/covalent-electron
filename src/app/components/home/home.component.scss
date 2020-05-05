@@ -1,4 +1,4 @@
-:host /deep/ {
+:host ::ng-deep {
     mat-sidenav .cdk-focus-trap-content > * {
         height: 100%;
     }
