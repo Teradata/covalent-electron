@@ -19,4 +19,5 @@ module.exports = {
       features: ['contextmenu','clipboard','find'],
     }),
   ],
+  target: 'electron-renderer'
 };

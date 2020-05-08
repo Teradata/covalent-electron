@@ -127,7 +127,8 @@ gulp.task('watch-src', 'Watch for changed files', function (cb) {
   // Reload renderer process after files change
   var cmd = getSpawn('ng', ['build', '--watch', '--output-path', 'dist-ng']);
   cmd.on('close', function (code) {
-      cb(code);
+    runSequence('changes-detected');
+    cb(code);
   });
 
   if (!/^win/.test(process.platform)) { // linux
