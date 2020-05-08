@@ -1,11 +1,18 @@
-<td-expansion-panel expand="true" [label]="label" (collapsed)="emitCollapsed()">
-  <mat-card-title>{{filePath}}</mat-card-title>
-  <mat-card-subtitle>Size: {{size}} Modified: {{modifiedDate}}</mat-card-subtitle>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <p><span class="mat-subheading-1">File Contents:</span></p>
-    <td-highlight lang="html">
-      {{contents}} 
-    </td-highlight>
-  </mat-card-content>
-</td-expansion-panel>
+<mat-expansion-panel expand="true" (closed)="emitCollapsed()">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{label}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-card>
+    <mat-card-title>{{filePath}}</mat-card-title>
+    <mat-card-subtitle>Size: {{size}} Modified: {{modifiedDate}}</mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p><span class="mat-subheading-1">File Contents:</span></p>
+      <td-highlight lang="html">
+        {{contents}}
+      </td-highlight>
+    </mat-card-content>
+  </mat-card>
+</mat-expansion-panel>

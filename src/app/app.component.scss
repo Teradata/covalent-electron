@@ -1,7 +1,7 @@
 // Applies Shadow DOM styles to the root app component
 
-// :host /deep/ lets you travel down the Shadow DOM tree to change web component styles
-:host /deep/ {
+// :host ::ng-deep lets you travel down the Shadow DOM tree to change web component styles
+:host ::ng-deep {
 
     // mat-divider has a bug in angular-material that doesn't apply color
     mat-divider {

@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements AfterViewInit {
+  value: string = '';
+  language: string = 'sql';
 
   constructor(private _router: Router) {}
 
@@ -90,5 +92,13 @@ export class HomeComponent implements AfterViewInit {
     monacoEditor.registerLanguage(language);
     monacoEditor.theme = 'myCustomTheme';
     monacoEditor.language = 'mySpecialLanguage';
+  }
+
+  setEditorValue(contents: string): void {
+    this.value = contents;
+  }
+
+  setEditorLanguage(language: string): void {
+    this.language = language;
   }
 }

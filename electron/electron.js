@@ -2,6 +2,8 @@ const electron = require('electron');
 var client;
 // Module to control application life.
 const app = electron.app;
+// see https://github.com/electron/electron/issues/18397
+app.allowRendererProcessReuse = true;
 // Connect to live update if LIVE_UPDATE env variable is true
 if (process.env.LIVE_UPDATE === "true") {
   app.commandLine.appendSwitch('remote-debugging-port', '8315');
@@ -25,10 +27,6 @@ function createWindow () {
   protocol.interceptFileProtocol('file', function(req, callback) {
     var url = req.url.substr(7);
     callback({path: path.normalize(__dirname + url)});
-  },function (error) {
-    if (error) {
-      console.error('Failed to register protocol');
-    }
   });
 
   // Create the browser window
@@ -36,8 +34,9 @@ function createWindow () {
     width: 1200, 
     height: 700,
     titleBarStyle: 'hidden-inset',
-    "web-preferences": {
-      "web-security": false
+    webPreferences: {
+      preload: path.join(app.getAppPath(), 'electron-load.js'),
+      nodeIntegration: true
     }
   });
 

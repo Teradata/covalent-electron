@@ -9,25 +9,31 @@ import { appRoutes, appRoutingProviders } from './app.routes';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
 import { CovalentFileSelectModule } from '../platform/file-select';
+import { FileExpansionPanelComponent } from '../components/file-expansion-panel/file-expansion-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FileExpansionPanelComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,
     MatButtonModule,
-    MatIconModule,
     MatButtonToggleModule,
-    MatMenuModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
     MatListModule,
+    MatMenuModule,
     MatSidenavModule,
     CovalentHighlightModule,
     CovalentCodeEditorModule,
