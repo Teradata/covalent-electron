@@ -75,7 +75,7 @@
     "chokidar": "^3.3.1",
     "codelyzer": "^5.1.2",
     "css-loader": "^3.5.3",
-    "electron": "^8.2.5",
+    "electron": "^11.5.0",
     "electron-connect": "^0.6.3",
     "electron-packager": "^14.2.1",
     "file-loader": "^6.0.0",
