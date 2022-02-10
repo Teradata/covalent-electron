@@ -89,7 +89,7 @@
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.5.3",
     "monaco-editor-webpack-plugin": "1.9.0",
-    "node-sass": "4.13.1",
+    "node-sass": "7.0.0",
     "require-dir": "1.2.0",
     "rimraf": "3.0.2",
     "run-sequence": "^2.2.1",
